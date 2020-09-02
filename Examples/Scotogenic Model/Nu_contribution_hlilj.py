@@ -20,10 +20,8 @@ l,i,j = symbols('l,i,j',integer=True)
 
 # Defining vertexes
 mNul,mη = symbols(r'm_{{N_l}},m_{{\eta}}',real=True)
-λ3 = (2/v**2)*(mη**2-μ2**2)
-
-mNul,mη = symbols(r'm_{{N_l}},m_{{\eta}}',real=True)
 masasNηη = [mNul,mη,mη]
+λ3 = (2/v**2)*(mη**2-μ2**2)
 
 hηuηd = lfvhd.VertexHSS(-I*λ3*v)
 ηdljNl = lfvhd.VertexSFF(0,I*conjugate(Yν[l,j]))
@@ -52,12 +50,12 @@ hl1l1 = lfvhd.VertexHFF((I*g2*lfvhd.mi)/(2*mW))
 #### Sumando burbujas
 ###############################################
 
-BubML = Nlη.ML() + ηNl.ML()
+BubML = Nlη.AL() + ηNl.AL()
 BubML = BubML.subs(lfvhd.cambiosDivFin(mNul,mη,mη)).subs(
     lfvhd.cambios_aprox(mNul,mη,mη)).simplify()
 
 
-BubMR =Nlη.MR() + ηNl.MR()
+BubMR =Nlη.AR() + ηNl.AR()
 BubMR = BubMR.subs(lfvhd.cambiosDivFin(mNul,mη,mη)).subs(
     lfvhd.cambios_aprox(mNul,mη,mη)).simplify()
 
@@ -66,10 +64,10 @@ BubMR = BubMR.subs(lfvhd.cambiosDivFin(mNul,mη,mη)).subs(
 #########################
 constantes = {mW:80.379,v:246,g2:2*(80.379/246)}
 #ML_GIM()
-TriangNL = (Nlηuηd.ML().subs(lfvhd.cambiosDivFin(*Nlηuηd.masas)).subs(lfvhd.cambios_aprox(*Nlηuηd.masas)))
+TriangNL = (Nlηuηd.AL().subs(lfvhd.cambiosDivFin(*Nlηuηd.masas)).subs(lfvhd.cambios_aprox(*Nlηuηd.masas)))
 
 
-TriangNR = Nlηuηd.MR().subs(lfvhd.cambiosDivFin(*Nlηuηd.masas)).subs(lfvhd.cambios_aprox(*Nlηuηd.masas))
+TriangNR = Nlηuηd.AR().subs(lfvhd.cambiosDivFin(*Nlηuηd.masas)).subs(lfvhd.cambios_aprox(*Nlηuηd.masas))
 
 
 

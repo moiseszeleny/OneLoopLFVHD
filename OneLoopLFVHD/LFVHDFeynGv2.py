@@ -12,7 +12,14 @@ from sympy import sqrt,collect,Add,log,conjugate,re
 ##################################################################################################
 # Masas del higgs tipo SM, m1 y m2 masas de los leptones finales y delta parámetro infinitesimal para las integrales de Passarivo Veltman
 ##################################################################################################
-ma,mi,mj = symbols(r'm_a,m_i,m_j',positive=True)
+m0 = input('Initial particle mass ma: ')
+m1 = input('Final particle mass mi: ')
+m2 = input('Final particle mass mj: ')
+
+ma = symbols(fr'{m0}',positive=True)
+mi = symbols(fr'{m1}',positive=True)
+mj = symbols(fr'{m2}',positive=True)
+
 δ = 0
 
 from scipy.special import spence
@@ -128,11 +135,11 @@ class PaVetoDivFin(Function):
             args = F.args
             return Div(B2_1(*args)) + b2_1(*args)
         elif F.func==C1:
-            args = F.args
+            #args = F.args
             M0,M1,M2 = F.args
             return (1/ma**2)*(b1_0(M0,M1) - b12_0(M1,M2) + (M2**2-M0**2)*C0(M0,M1,M2))
         elif F.func==C2:
-            args = F.args
+            #args = F.args
             M0,M1,M2 = F.args
             return (-1/ma**2)*(b2_0(M0,M2) - b12_0(M1,M2) + (M1**2-M0**2)*C0(M0,M1,M2))
         else:
@@ -259,9 +266,8 @@ cambios_aprox = lambda M0,M1,M2:{PV:PaVe_aprox(PV) for PV in funcPaVe(M0,M1,M2)}
 # Funciones H para las diferentes contribuciones al proceso h->l1,l2
 ##########################################################################################################3
 # Funciones para las contribuciones del tipo FSV
-M0,M1,M2,MV = symbols('M0,M1,M2,MV',real=True)
+#M0,M1,M2 = symbols('M0,M1,M2',real=True)
 HFSV = [0]*9
-HFSV
 HFSV[1] = lambda M0,M1,M2: B12_0(M1,M2) + M0**2*C0(M0,M1,M2) + (mj**2- 2*ma**2)*C2(M0,M1,M2) + 2*mi**2*(-C1(M0,M1,M2) + C2(M0,M1,M2))
 HFSV[2] = lambda M0,M1,M2: mi*mj*(C1(M0,M1,M2) - 2*C2(M0,M1,M2))
 HFSV[3] = lambda M0,M1,M2: mi*M0*(C1(M0,M1,M2) - 2*C0(M0,M1,M2))
@@ -299,29 +305,49 @@ HFVV[3] = lambda M0,M1,M2: M0*D*C0(M0,M1,M2)
 ################################################
 # Funciones para las contribuciones del tipo SFF
 ###############################################
-HSFF = [0]*5
-HSFF[1] = lambda M0,M1,M2: mi*M2*(C1(M0,M1,M2)-C0(M0,M1,M2))
-HSFF[2] =  lambda M0,M1,M2: M2*(M1*C0(M0,M1,M2) - mj*C2(M0,M1,M2))
-HSFF[3] =  lambda M0,M1,M2: B12_0(M1,M2) + M0**2*C0(M0,M1,M2) - mi**2*C1(M0,M1,M2) + mj**2*C2(M0,M1,M2) + (ma**2 -mi**2 -mj**2)*(C1(M0,M1,M2) - C2(M0,M1,M2) - C0(M0,M1,M2) ) - mj*M1*(C0(M0,M1,M2)  + C2(M0,M1,M2))           
-HSFF[4] =  lambda M0,M1,M2: mi*M1*C1(M0,M1,M2) + mi*mj*(C1(M0,M1,M2) - C2(M0,M1,M2) - C0(M0,M1,M2) )
+#HSFF = [0]*5
+#HSFF[1] = lambda M0,M1,M2: mi*M2*(C1(M0,M1,M2)-C0(M0,M1,M2))
+#HSFF[2] =  lambda M0,M1,M2: M2*(M1*C0(M0,M1,M2) - mj*C2(M0,M1,M2))
+#HSFF[3] =  lambda M0,M1,M2: B12_0(M1,M2) + M0**2*C0(M0,M1,M2) - mi**2*C1(M0,M1,M2) + mj**2*C2(M0,M1,M2) + (ma**2 -mi**2 -mj**2)*(C1(M0,M1,M2) - C2(M0,M1,M2) - C0(M0,M1,M2) ) - mj*M1*(C0(M0,M1,M2)  + C2(M0,M1,M2))           
+#HSFF[4] =  lambda M0,M1,M2: mi*M1*C1(M0,M1,M2) + mi*mj*(C1(M0,M1,M2) - C2(M0,M1,M2) - C0(M0,M1,M2) )
+
+HSFF = [0]*9
+HSFF[1] = lambda M0,M1,M2: B12_0(M1,M2) + M0**2*C0(M0,M1,M2) -mi**2*C1(M0,M1,M2) + mj**2*C2(M0,M1,M2)
+HSFF[2] = lambda M0,M1,M2: mi*mj*(C0(M0,M1,M2) + C2(M0,M1,M2) -C1(M0,M1,M2))
+HSFF[3] = lambda M0,M1,M2: mj*M2*C2(M0,M1,M2)
+HSFF[4] = lambda M0,M1,M2: mi*M2*(C0(M0,M1,M2)-C1(M0,M1,M2))
+HSFF[5] = lambda M0,M1,M2: mj*M1*(C0(M0,M1,M2) + C2(M0,M1,M2))
+HSFF[6] = lambda M0,M1,M2: -mi*M1*C1(M0,M1,M2)
+HSFF[7] = lambda M0,M1,M2: M1*M2*C0(M0,M1,M2)
+
 #################################################
 # Funciones para las contribuciones del tipo VFF
 #################################################
-HVFF = [0]*5
+#HVFF = [0]*5
 
-SLR1 = lambda M0,M1,M2: B1_0(M0,M1) + (M2**2-mj**2)*C0(M0,M1,M2) - mi**2*C1(M0,M1,M2) - mj**2*C2(M0,M1,M2) - mj*M1*(C0(M0,M1,M2) + C2(M0,M1,M2)) - (ma**2 -mi**2 -mj**2)*(C0(M0,M1,M2)  + C2(M0,M1,M2)) 
+#SLR1 = lambda M0,M1,M2: B1_0(M0,M1) + (M2**2-mj**2)*C0(M0,M1,M2) - mi**2*C1(M0,M1,M2) - mj**2*C2(M0,M1,M2) - mj*M1*(C0(M0,M1,M2) + C2(M0,M1,M2)) - (ma**2 -mi**2 -mj**2)*(C0(M0,M1,M2)  + C2(M0,M1,M2)) 
 
-SRL1 = lambda M0,M1,M2: mi*M1*C1(M0,M1,M2) - mi*mj*(C0(M0,M1,M2) - C1(M0,M1,M2) + C2(M0,M1,M2))
+#SRL1 = lambda M0,M1,M2: mi*M1*C1(M0,M1,M2) - mi*mj*(C0(M0,M1,M2) - C1(M0,M1,M2) + C2(M0,M1,M2))
 
-TLR1 = lambda M0,M1,M2: mi*M2*(C1(M0,M1,M2) - C0(M0,M1,M2) )
+#TLR1 = lambda M0,M1,M2: mi*M2*(C1(M0,M1,M2) - C0(M0,M1,M2) )
     
-TRL1 = lambda M0,M1,M2: M2*(M1*C0(M0,M1,M2) - mj*C2(M0,M1,M2))
+#TRL1 = lambda M0,M1,M2: M2*(M1*C0(M0,M1,M2) - mj*C2(M0,M1,M2))
 
 
-HVFF[1] = lambda M0,M1,M2: -D*SLR1(M0,M1,M2)
-HVFF[2] =  lambda M0,M1,M2: -D*SRL1(M0,M1,M2)
-HVFF[3] = lambda M0,M1,M2: -D*TLR1(M0,M1,M2)
-HVFF[4] =  lambda M0,M1,M2: -D*TRL1(M0,M1,M2)
+#HVFF[1] = lambda M0,M1,M2: -D*SLR1(M0,M1,M2)
+#HVFF[2] =  lambda M0,M1,M2: -D*SRL1(M0,M1,M2)
+#HVFF[3] = lambda M0,M1,M2: -D*TLR1(M0,M1,M2)
+#HVFF[4] =  lambda M0,M1,M2: -D*TRL1(M0,M1,M2)
+
+HVFF = [0]*9
+HVFF[1] = lambda M0,M1,M2: -(2-D)*mi*M2*(C0(M0,M1,M2)-C1(M0,M1,M2))
+HVFF[2] = lambda M0,M1,M2:-(2-D)*mj*M2*C2(M0,M1,M2)
+HVFF[3] = lambda M0,M1,M2:(D-4)*mi*mj*(C1(M0,M1,M2)-C0(M0,M1,M2)-C2(M0,M1,M2))
+HVFF[4] = lambda M0,M1,M2:-(D*(B12_0(M0,M1) + M0**2*C0(M0,M1,M2) +mi**2*C2(M0,M1,M2) - mi**2*C1(M0,M1,M2)) + 4*((ma**2 -mi**2 - mj**2)/2)*(C1(M0,M1,M2)-C0(M0,M1,M2)-C2(M0,M1,M2)))
+HVFF[5] = lambda M0,M1,M2:(2-D)*mi*M1*C1(M0,M1,M2)
+HVFF[6] = lambda M0,M1,M2:-(2-D)*mj*M1*(C0(M0,M1,M2) + C2(M0,M1,M2))
+HVFF[7] = lambda M0,M1,M2:-D*M1*M2*C0(M0,M1,M2)
+
 #########################################
 #####################################################################################################3
 #Definiendo las clases de los vertices genericos para este tipo de procesos
@@ -347,6 +373,12 @@ class VertexHSS():
                 c represents the constant coupling among three scalars
         '''
         self.c = c
+        
+    def __str__(self):
+        return f'VertexHSS({self.c!r})'
+    
+    def __repr__(self):
+        return self.__str__()
     def show(self):
         '''Returns three scalars coupling'''
         return self.c
@@ -366,11 +398,15 @@ class VertexHFF(VertexHSS):
     '''
     #def __init__(self,c):
     #    self.c = c
+    def __str__(self):
+        return f'VertexHFF({self.c!r})'
+    
     def show(self):
         '''
         Returns Higgs boson and two fermions coupling
         '''
         return self.c
+    
 
 class VertexHSV(VertexHSS):
     '''Class of vertex of two scalars and one vector boson
@@ -387,6 +423,9 @@ class VertexHSV(VertexHSS):
     '''
     #def __init__(self,c):
     #    self.c = c
+    def __str__(self):
+        return f'VertexHSV({self.c!r})'
+    
     def show(self):
         '''Returns two scalars and one vector boson coupling'''
         pmu1,pmu2 = symbols(r'{{p^{\mu}_1}},{{p^{\mu}_2}}')
@@ -405,8 +444,9 @@ class VertexHVV(VertexHSS):
     show()
         returns one scalar and two vector bosons coupling
     '''
-    #def __init__(self,c):
-    #    self.c = c
+    def __str__(self):
+        return f'VertexHVV({self.c!r})'
+    
     def show(self):
         '''Returns one scalar and two vector bosons coupling'''
         gmunu = symbols(r'{{g^{\mu \nu}}}',real=True)
@@ -439,6 +479,13 @@ class VertexSFF():
         '''
         self.cR = cR
         self.cL = cL
+        
+    def __str__(self):
+        return f'VertexSFF({self.cR!r},{self.cL!r})'
+    
+    def __repr__(self):
+        return self.__str__()
+    
     def show(self):
         '''Returns one scalar and two fermions'''
         PR,PL = symbols('P_R,P_L',commutative=False)
@@ -447,7 +494,8 @@ class VertexSFF():
         return cR*PR + cL*PL
 
 class VertexHF0F0(VertexSFF):
-    pass
+    def __str__(self):
+        return f'VertexHF0F0({self.cR!r},{self.cL!r})'
 
 class VertexVFF(VertexSFF):
     '''Class vertex of one vector boson and two fermions.
@@ -461,7 +509,7 @@ class VertexVFF(VertexSFF):
             cL is the coefficint of PL in the coupling of one vector boson
             and two fermions
     
-    Methods
+    Methods__repr__
     -------
     show()
         returns one vector boson and two fermions
@@ -470,6 +518,9 @@ class VertexVFF(VertexSFF):
     #def __init__(self,cR,cL):
     #    self.cR = cR
     #    self.cL = cL
+    
+    def __str__(self):
+        return f'VertexVFF({self.cR!r},{self.cL!r})'
     def show(self):
         '''Returns one vector boson and two fermions'''
         PR,PL,gamma_mu = symbols(r'P_R,P_L,\gamma_\mu',commutative=False)
@@ -503,20 +554,26 @@ class Triangle():
         self.masas = masas
         self.vertices = [v1,v2,v3]
         self.Cs = [C0(*masas),C1(*masas),C2(*masas)]
+        
+    def __str__(self):
+        return f'Triangle({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def __repr__(self):
+        return self.__str__()
 
-    def ML(self):
+    def AL(self):
         return symbols('M_L')
-    def MR(self):
+    def AR(self):
         return symbols('M_R')
     
-    def ML_GIM(self):
+    def AL_GIM(self):
         M0,M1,M2 = self.masas
-        R = self.ML().subs(cambiosDivFin(M0,M1,M2)).expand()
+        R = self.AL().subs(cambiosDivFin(M0,M1,M2)).expand()
         return collect(Add(*[r for r in R.args if r.has(M0.simplify())]),self.Cs,simplify).simplify()
     
-    def MR_GIM(self):
+    def AR_GIM(self):
         M0,M1,M2 = self.masas
-        R = self.MR().subs(cambiosDivFin(M0,M1,M2)).expand()
+        R = self.AR().subs(cambiosDivFin(M0,M1,M2)).expand()
         return collect(Add(*[r for r in R.args if r.has(M0.simplify())]),self.Cs,simplify).simplify()
 
     #def ML_GIM(self,funcion=simplify):
@@ -555,13 +612,13 @@ class Triangle():
 #        M0,M1,M2 = self.masas
 #        return self.MR_GIM().subs(cambiosDivFin(M0,M1,M2))
 
-    def Div_ML(self,M):
+    def Div_AL(self,M):
         M0,M1,M2 = self.masas
-        ML = collect(self.ML().subs(cambiosDivFin(*self.masas)).expand(),[M],evaluate=False)
-        #display(list(ML.keys()))
+        AL = collect(self.AL().subs(cambiosDivFin(*self.masas)).expand(),[M],evaluate=False)
+        #display(list(AL.keys()))
         Lista = []
-        for m in ML.keys():
-            dicΔe = collect(ML[m],[Δe],evaluate=False)
+        for m in AL.keys():
+            dicΔe = collect(AL[m],[Δe],evaluate=False)
             claves = dicΔe.keys()
             if Δe in claves:
                 Lista.append((dicΔe[Δe]*m).simplify()*Δe)
@@ -590,62 +647,94 @@ class Triangle():
 
 FactorRD = I/(16*pi**2)
 class TriangleFSS(Triangle):
-    def ML(self):
+    def __str__(self):
+        return f'TriangleFSS({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
         return FactorRD*v1.c*(mi*v2.cL*v3.cR*C1(M0,M1,M2) - mj*v2.cR*v3.cL*C2(M0,M1,M2) + M0*v2.cL*v3.cL*C0(M0,M1,M2))
-    def MR(self):
+    def AR(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
         return FactorRD*v1.c*(mi*v2.cR*v3.cL*C1(M0,M1,M2) - mj*v2.cL*v3.cR*C2(M0,M1,M2) + M0*v2.cR*v3.cR*C0(M0,M1,M2))
 
 class TriangleFSV(Triangle):
-    def ML(self):
+    def __str__(self):
+        return f'TriangleFSV({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
         return-FactorRD*v1.c*(v2.cL*v3.cL*(HFSV[1](M0,M1,M2)) + v2.cR*v3.cR*(HFSV[2](M0,M1,M2)) + v2.cL*v3.cR*(HFSV[3](M0,M1,M2)) + v2.cR*v3.cL*(HFSV[4](M0,M1,M2)))
-    def MR(self):
+    def AR(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
         return FactorRD*v1.c*(v2.cR*v3.cR*(HFSV[1](M0,M1,M2)) + v2.cL*v3.cL*(HFSV[2](M0,M1,M2)) + v2.cR*v3.cL*(HFSV[3](M0,M1,M2)) + v2.cL*v3.cR*(HFSV[4](M0,M1,M2)))
+
 class TriangleFVS(Triangle):
-    def ML(self):
+    def __str__(self):
+        return f'TriangleFVS({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
         return -FactorRD*v1.c*(v2.cL*v3.cL*(HFVS[1](M0,M1,M2)) + v2.cR*v3.cR*(HFVS[2](M0,M1,M2)) + v2.cL*v3.cR*(HFVS[3](M0,M1,M2)) + v2.cR*v3.cL*(HFVS[4](M0,M1,M2)))
-    def MR(self):
+    def AR(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
         return -FactorRD*v1.c*(v2.cR*v3.cR*(HFVS[1](M0,M1,M2)) + v2.cL*v3.cL*(HFVS[2](M0,M1,M2)) + v2.cR*v3.cL*(HFVS[3](M0,M1,M2)) + v2.cL*v3.cR*(HFVS[4](M0,M1,M2)))
+
 class TriangleFVV(Triangle):
-    def ML(self):
+    def __str__(self):
+        return f'TriangleFVV({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
         return FactorRD*v1.c*(v2.cL*v3.cL*(HFVV[1](M0,M1,M2)) + v2.cR*v3.cR*(HFVV[2](M0,M1,M2)) + v2.cL*v3.cR*(HFVV[3](M0,M1,M2)))
-    def MR(self):
+    def AR(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
         return FactorRD*v1.c*(v2.cR*v3.cR*(HFVV[1](M0,M1,M2)) + v2.cL*v3.cL*(HFVV[2](M0,M1,M2)) + v2.cR*v3.cL*(HFVV[3](M0,M1,M2)) )
 
 class TriangleSFF(Triangle):
-    def ML(self):
+    def __str__(self):
+        return f'TriangleSFF({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M1, M2 = self.masas
-        return FactorRD(v1.cL*v2.cL*v3.cL*HSFF[1](M0,M1,M2) + v1.cR*v2.cR*v3.cR*HSFF[2](M0,M1,M2) + v1.cL*v2.cR*v3.cR*HSFF[3](M0,M1,M2) + v1.cR*v2.cL*v3.cL*HSFF[4](M0,M1,M2))
-    def MR(self):
+        return FactorRD*(v1.cR*v2.cL*v3.cL*HSFF[1](M0,M1,M2) + v1.cL*v2.cR*v3.cR*HSFF[2](M0,M1,M2) + 
+      v1.cR*v2.cR*v3.cL*HSFF[3](M0,M1,M2) + v1.cL*v2.cL*v3.cR*HSFF[4](M0,M1,M2) +
+     v1.cL*v2.cR*v3.cL*HSFF[5](M0,M1,M2) + v1.cR*v2.cL*v3.cR*HSFF[6](M0,M1,M2) +
+     v1.cL*v2.cL*v3.cL*HSFF[7](M0,M1,M2))
+    def AR(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
-        return FactorRD(v1.cR*v2.cR*v3.cR*HSFF[1](M0,M1,M2) + v1.cL*v2.cL*v3.cL*HSFF[2](M0,M1,M2) + v1.cR*v2.cL*v3.cL*HSFF[3](M0,M1,M2) + v1.cL*v2.cR*v3.cR*HSFF[4](M0,M1,M2))
+        return FactorRD*(v1.cL*v2.cR*v3.cR*HSFF[1](M0,M1,M2) + v1.cR*v2.cL*v3.cL*HSFF[2](M0,M1,M2) + 
+      v1.cL*v2.cL*v3.cR*HSFF[3](M0,M1,M2) + v1.cR*v2.cR*v3.cL*HSFF[4](M0,M1,M2) +
+     v1.cR*v2.cL*v3.cR*HSFF[5](M0,M1,M2) + v1.cL*v2.cR*v3.cL*HSFF[6](M0,M1,M2) +
+     v1.cR*v2.cR*v3.cR*HSFF[7](M0,M1,M2))
 
 class TriangleVFF(Triangle):
-    def ML(self):
+    def __str__(self):
+        return f'TriangleVFF({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
-        return FactorRD*(v1.cL*v2.cL*v3.cR*HVFF[1](M0,M1,M2) + v1.cR*v2.cR*v3.cL*HVFF[2](M0,M1,M2) + v1.cL*v2.cR*v3.cL*HVFF[3](M0,M1,M2) + v1.cR*v2.cL*v3.cR*HVFF[2](M0,M1,M2))
-    def MR(self):
+        return FactorRD*(v1.cR*v2.cL*v3.cL*HVFF[1](M0,M1,M2) + v1.cL*v2.cR*v3.cR*HVFF[2](M0,M1,M2) + 
+      v1.cR*v2.cR*v3.cL*HVFF[3](M0,M1,M2) + v1.cL*v2.cL*v3.cR*HVFF[4](M0,M1,M2) +
+     v1.cL*v2.cL*v3.cL*HVFF[5](M0,M1,M2) + v1.cR*v2.cR*v3.cR*HVFF[6](M0,M1,M2) +
+     v1.cR*v2.cL*v3.cR*HVFF[7](M0,M1,M2))
+    def AR(self):
         v1,v2,v3 = self.vertices
         M0,M1,M2 = self.masas
-        return FactorRD*(v1.cR*v2.cR*v3.cL*HVFF[1](M0,M1,M2) + v1.cL*v2.cL*v3.cR*HVFF[2](M0,M1,M2) + v1.cR*v2.cL*v3.cR*HVFF[3](M0,M1,M2) + v1.cL*v2.cR*v3.cL*HVFF[2](M0,M1,M2))
+        return FactorRD*(v1.cL*v2.cR*v3.cR*HVFF[1](M0,M1,M2) + v1.cR*v2.cL*v3.cL*HVFF[2](M0,M1,M2) + 
+      v1.cL*v2.cL*v3.cR*HVFF[3](M0,M1,M2) + v1.cR*v2.cR*v3.cL*HVFF[4](M0,M1,M2) +
+     v1.cR*v2.cR*v3.cR*HVFF[5](M0,M1,M2) + v1.cL*v2.cL*v3.cL*HVFF[6](M0,M1,M2) +
+     v1.cL*v2.cR*v3.cL*HVFF[7](M0,M1,M2))
 
 #####################################################################################################3
 #Definiendo las funciones H para los diferentes diagramas tipo burbuja
@@ -683,18 +772,24 @@ HSF[4] = lambda M0,M2: ((-mi*mj)/(mj**2 - mi**2))*B2_1(M0,M2)
 #####################################################################################################3
 #Definiendo las clases para los diferentes diagramas tipo burbuja
 #####################################################################################################3
-class Bubble():
+class Bubble():    
     def __init__(self,v1,v2,v3,masas):
         self.v1 = v1
         self.v2 = v2
         self.v3 = v3
         self.masas = masas
         self.vertices = [v1,v2,v3]
+    
+    def __str__(self):
+        return f'Bubble({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def __repr__(self):
+        return self.__str__()
 
-    def ML(self):
-        return symbols('M_L')
-    def MR(self):
-        return symbols('M_R')
+    def AL(self):
+        return symbols('A_L')
+    def AR(self):
+        return symbols('A_R')
 
 #    def MLGIMDivFin(self):
 #        M0,M1,M2 = self.masas
@@ -703,45 +798,57 @@ class Bubble():
 #        M0,M1,M2 = self.masas
 #        return self.MR_GIM().subs(cambiosDivFin(M0,M1,M2))
     def width_hl1l2(self):
-        ML,MR = self.ML(), self.MR()
+        ML,MR = self.AL(), self.AR()
         return 1/(8 *pi* ma)*sqrt((1-((mi**2+mj**2)/ma)**2)*(1-((mi**2-mj**2)/ma)**2))*((ma**2 - mi**2 - mj**2)*(abs(ML)**2 + abs(MR)**2)-4*mi*mj*re(ML*conjugate(MR)))
 
 class BubbleFV(Bubble):
-    def ML(self):
+    def __str__(self):
+        return f'BubbleFV({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M1 = self.masas
         return FactorRD*v1.c*(v2.cL*v3.cL*(HFV[1](M0,M1)) + v2.cR*v3.cR*(HFV[2](M0,M1)) + v2.cL*v3.cR*(HFV[3](M0,M1)) + v2.cR*v3.cL*(HFV[4](M0,M1)))
-    def MR(self):
+    def AR(self):
         v1,v2, v3 = self.vertices
         M0,M1 = self.masas
         return FactorRD*v1.c*(v2.cR*v3.cR*(HFV[1](M0,M1)) + v2.cL*v3.cL*(HFV[2](M0,M1)) + v2.cR*v3.cL*(HFV[3](M0,M1)) + v2.cL*v3.cR*(HFV[4](M0,M1)))
 
 class BubbleVF(Bubble):
-    def ML(self):
+    def __str__(self):
+        return f'BubbleVF({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M2 = self.masas
         return FactorRD*v1.c*(v2.cL*v3.cL*(HVF[1](M0,M2)) + v2.cR*v3.cR*(HVF[2](M0,M2)) + v2.cL*v3.cR*(HVF[3](M0,M2)) + v2.cR*v3.cL*(HVF[4](M0,M2)))
-    def MR(self):
+    def AR(self):
         v1,v2,v3 = self.vertices
         M0,M2 = self.masas
         return FactorRD*v1.c*(v2.cR*v3.cR*(HVF[1](M0,M2)) + v2.cL*v3.cL*(HVF[2](M0,M2)) + v2.cR*v3.cL*(HVF[3](M0,M2)) + v2.cL*v3.cR*(HVF[4](M0,M2)))
 
 class BubbleFS(Bubble):
-    def ML(self):
+    def __str__(self):
+        return f'BubbleFS({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M1 = self.masas
         return FactorRD*v1.c*(v2.cL*v3.cL*(HFS[1](M0,M1)) + v2.cR*v3.cR*(HFS[2](M0,M1)) + v2.cL*v3.cR*(HFS[3](M0,M1)) + v2.cR*v3.cL*(HFS[4](M0,M1)))
-    def MR(self):
+    def AR(self):
         v1,v2,v3 = self.vertices
         M0,M1 = self.masas
         return FactorRD*v1.c*(v2.cR*v3.cR*(HFS[1](M0,M1)) + v2.cL*v3.cL*(HFS[2](M0,M1)) + v2.cR*v3.cL*(HFS[3](M0,M1)) + v2.cL*v3.cR*(HFS[4](M0,M1)))
 
 class BubbleSF(Bubble):
-    def ML(self):
+    def __str__(self):
+        return f'BubbleSF({self.v1!r}, {self.v2!r}, {self.v3!r},{self.masas!r})'
+    
+    def AL(self):
         v1,v2,v3 = self.vertices
         M0,M2 = self.masas
         return FactorRD*v1.c*(v2.cL*v3.cL*(HSF[1](M0,M2)) + v2.cR*v3.cR*(HSF[2](M0,M2)) + v2.cL*v3.cR*(HSF[3](M0,M2)) + v2.cR*v3.cL*(HSF[4](M0,M2)))
-    def MR(self):
+    def AR(self):
         v1,v2,v3 = self.vertices
         M0,M2 = self.masas
         return FactorRD*v1.c*(v2.cR*v3.cR*(HSF[1](M0,M2)) + v2.cL*v3.cL*(HSF[2](M0,M2)) + v2.cR*v3.cL*(HSF[3](M0,M2)) + v2.cL*v3.cR*(HSF[4](M0,M2)))
@@ -757,8 +864,8 @@ def Γhlilj(ML,MR,ma=125.18,mi=1.777,mj=0.1507):
 def BRhlilj(ML,MR,ma=125.18,mi=1.777,mj=0.1507):
     return Γhlilj(ML ,MR,ma,mi,mj)/(Γhlilj(ML ,MR,ma,mi,mj)+ 4.07e-3)
 
-
-print('All right LFVHDFeynGv2')
+if __name__=='__main__':
+    print('All right LFVHDFeynGv2')
 
 
 
