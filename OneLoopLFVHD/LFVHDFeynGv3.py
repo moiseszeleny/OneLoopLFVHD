@@ -223,27 +223,7 @@ class PaVe_aprox(Function):
             y1 = xk(1,M1,M2)
             y2 = xk(2,M1,M2)
             y3 = x3(M0,M1)
-            if M1==M2:
-                if M1==0:
-                    return (pi**2 + 3*log((-2*M0**2)/ma**2)**2 + 6*polylog(2,1 + (2*M0**2)/ma**2))/(3.*ma**2)
-                else:
-                    return (-log((-4*M0**2 + 4*M1**2 - ma**2 + sqrt(-8*M1**2*ma**2 + ma**4))/(-ma**2 + sqrt(-8*M1**2*ma**2 + ma**4)))**2 + 
-                    -    log((-4*M0**2 + 4*M1**2 - ma**2 + sqrt(-8*M1**2*ma**2 + ma**4))/(ma**2 + sqrt(-8*M1**2*ma**2 + ma**4)))**2 - 
-                    -    2*polylog(2,(2*(M0**2 - M1**2)**2)/(2*(M0**2 - M1**2)**2 + M0**2*ma**2)) + 
-                    -    2*polylog(2,((M0 - M1)*(M0 + M1)*(2*M0**2 - 2*M1**2 + ma**2))/(2*(M0**2 - M1**2)**2 + M0**2*ma**2)) - 
-                    -    2*polylog(2,(4*(M0 - M1)*(M0 + M1))/(-ma**2 + sqrt(-8*M1**2*ma**2 + ma**4))) + 
-                    -    2*polylog(2,(2*(2*M0**2 - 2*M1**2 + ma**2))/(ma**2 + sqrt(-8*M1**2*ma**2 + ma**4))) + 
-                    -    2*polylog(2,(4*(M0 - M1)*(M0 + M1))/(4*M0**2 - 4*M1**2 + ma**2 + sqrt(-8*M1**2*ma**2 + ma**4))) - 
-                    -    2*polylog(2,(2*(2*M0**2 - 2*M1**2 + ma**2))/(4*M0**2 - 4*M1**2 + ma**2 + sqrt(-8*M1**2*ma**2 + ma**4))))/ma**2
-            else:
-                if M1==0:
-                    return (log((-2*M0**2)/(-2*M2**2 + ma**2))**2 + 2*polylog(2,1 - M2**2/M0**2) + 
-                    2*polylog(2,1 + (2*M0**2)/(-2*M2**2 + ma**2)))/ma**2
-                elif M2==0:
-                    return (log((-2*M0**2)/(-2*M1**2 + ma**2))**2 + 2*polylog(2,1 - M1**2/M0**2) + 
-                    2*polylog(2,1 + (2*M0**2)/(-2*M1**2 + ma**2)))/ma**2
-                else:
-                    return (R0(y0,y1) + R0(y0,y2) - R0(y0,y3))/ma**2
+            return (R0(y0,y1) + R0(y0,y2) - R0(y0,y3))/ma**2
                 
         else:
             raise ValueError(f'{F.func} is not defined.')
@@ -764,33 +744,33 @@ class TriangleVFF(Triangle):
 #####################################################################################################3
 ### Funciones para las correcciones de burbuja FV
 HFV = [0]*5
-HFV[1] = lambda M0,M1: ((mi*mj)/(mi**2 - mj**2))*(D-2)*B1_1(M0,M1)
-HFV[2] = lambda M0,M1: ((mi**2)/(mi**2 - mj**2))*(D-2)*B1_1(M0,M1)
-HFV[3] = lambda M0,M1: -((mj*M0)/(mi**2 - mj**2))*D*B1_0(M0,M1)
-HFV[4] = lambda M0,M1: -((mi*M0)/(mi**2 - mj**2))*D*B1_0(M0,M1)
+HFV[1] = lambda M0,M1: ((mi*mj)/(mi**2 - mj**2))*(D-2)*B1_1(M0,M1)#HRR
+HFV[2] = lambda M0,M1: ((mi**2)/(mi**2 - mj**2))*(D-2)*B1_1(M0,M1)#HLL
+HFV[3] = lambda M0,M1: -((mj*M0)/(mi**2 - mj**2))*D*B1_0(M0,M1)#HRL
+HFV[4] = lambda M0,M1: -((mi*M0)/(mi**2 - mj**2))*D*B1_0(M0,M1)#HLR
 
 ### Funciones para las correcciones de burbuja VF
 HVF = [0]*5
 FuncVF1 = lambda M0,M2: (D-2)*B2_1(M0,M2) + (1/M2**2)*(3*A0(M2) + 2*M0**2*B2_0(M0,M2) + (M0**2 + mj**2)*B2_1(M0,M2))
 FuncVF2 = lambda M0,M2: (D-1)*B2_0(M0,M2) -A0(M0)/M2**2
-HVF[1] = lambda M0,M2: -((mj**2)/(mj**2 - mi**2))*(D-2)*B2_1(M0,M2)
-HVF[2] =  lambda M0,M2: -((mi*mj)/(mj**2 - mi**2))*(D-2)*B2_1(M0,M2)
-HVF[3] = lambda M0,M2: -((mi*M0)/(mj**2 - mi**2))*D*B2_0(M0,M2)
-HVF[4] = lambda M0,M2: -((mj*M0)/(mj**2 - mi**2))*D*B2_0(M0,M2)
+HVF[1] = lambda M0,M2: -((mj**2)/(mj**2 - mi**2))*(D-2)*B2_1(M0,M2)#HRR
+HVF[2] =  lambda M0,M2: -((mi*mj)/(mj**2 - mi**2))*(D-2)*B2_1(M0,M2)#HLL
+HVF[3] = lambda M0,M2: -((mi*M0)/(mj**2 - mi**2))*D*B2_0(M0,M2)#HRL
+HVF[4] = lambda M0,M2: -((mj*M0)/(mj**2 - mi**2))*D*B2_0(M0,M2)#HLR
 
 ### Funciones para las correcciones de burbuja FS
 HFS = [0]*5
-HFS[1] = lambda M0,M1: ((mj*M0)/(mi**2 - mj**2))*B1_0(M0,M1)
-HFS[2] =  lambda M0,M1: ((mi*M0)/(mi**2 - mj**2))*B1_0(M0,M1)
-HFS[3] = lambda M0,M1: ((mi*mj)/(mi**2 - mj**2))*B1_1(M0,M1)
-HFS[4] = lambda M0,M1: ((mi**2)/(mi**2 - mj**2))*B1_1(M0,M1)
+HFS[1] = lambda M0,M1: ((mj*M0)/(mi**2 - mj**2))*B1_0(M0,M1)#HRR
+HFS[2] =  lambda M0,M1: ((mi*M0)/(mi**2 - mj**2))*B1_0(M0,M1)#HLL
+HFS[3] = lambda M0,M1: ((mi*mj)/(mi**2 - mj**2))*B1_1(M0,M1)#HRL
+HFS[4] = lambda M0,M1: ((mi**2)/(mi**2 - mj**2))*B1_1(M0,M1)#HLR
 
 ### Funciones para las correcciones de burbuja SF
 HSF = [0]*5
-HSF[1] = lambda M0,M2: ((mi*M0)/(mj**2 - mi**2))*B2_0(M0,M2)
-HSF[2] =  lambda M0,M2: ((mj*M0)/(mj**2 - mi**2))*B2_0(M0,M2)
-HSF[3] = lambda M0,M2: ((-mj**2)/(mj**2 - mi**2))*B2_1(M0,M2)
-HSF[4] = lambda M0,M2: ((-mi*mj)/(mj**2 - mi**2))*B2_1(M0,M2)
+HSF[1] = lambda M0,M2: ((mi*M0)/(mj**2 - mi**2))*B2_0(M0,M2)#HRR
+HSF[2] =  lambda M0,M2: ((mj*M0)/(mj**2 - mi**2))*B2_0(M0,M2)#HLL
+HSF[3] = lambda M0,M2: ((-mj**2)/(mj**2 - mi**2))*B2_1(M0,M2)#HRL
+HSF[4] = lambda M0,M2: ((-mi*mj)/(mj**2 - mi**2))*B2_1(M0,M2)#HLR
 
 #####################################################################################################3
 #Definiendo las clases para los diferentes diagramas tipo burbuja
@@ -881,11 +861,12 @@ class BubbleSF(Bubble):
 #########################################
 import numpy as np
 def Γhlilj(ML,MR,ma=125.18,mi=1.777,mj=0.1507):
-    return 1/(8 *np.pi* ma)*np.sqrt((1-((mi**2+mj**2)/ma)**2)*(1-((mi**2-mj**2)/ma)**2))*((ma**2 - mi**2 - mj**2)*(np.abs(ML)**2 + np.abs(MR)**2)-4*mi*mj*np.real(ML*np.conj(MR)))
+    r = 1/(8 *np.pi* ma)*np.sqrt((1-((mi**2+mj**2)/ma)**2)*(1-((mi**2-mj**2)/ma)**2))*((ma**2 - mi**2 - mj**2)*(np.abs(ML)**2 + np.abs(MR)**2)-4*mi*mj*np.real(ML*np.conj(MR)))
+    return np.nan_to_num(r)
 
 
 def BRhlilj(ML,MR,ma=125.18,mi=1.777,mj=0.1507):
-    return Γhlilj(ML ,MR,ma,mi,mj)/(Γhlilj(ML ,MR,ma,mi,mj)+ 4.07e-3)
+    return np.nan_to_num(Γhlilj(ML ,MR,ma,mi,mj)/(Γhlilj(ML ,MR,ma,mi,mj)+ 4.07e-3))
 
 if __name__=='__main__':
     print('All right LFVHDFeynGv2')

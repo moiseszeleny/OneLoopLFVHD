@@ -1,1 +1,1 @@
-from .LFVHDFeynGv2 import *
+from .LFVHDFeynGv3 import *

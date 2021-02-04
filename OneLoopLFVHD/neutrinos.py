@@ -1,4 +1,4 @@
-from sympy import symbols,sqrt,Matrix,cos,sin,exp,I,pi,solve,Eq,im,conjugate
+from sympy import symbols,sqrt,Matrix,cos,sin,exp,I,im,conjugate,asin
 
 ############################################################################
 # Mixing Matrix
@@ -213,15 +213,28 @@ class SetObservables():
 
 class NuOscObservables(SetObservables):
     sin2theta12 = Observable(0.310,('1 sigma',0.31-0.012,0.31+0.013),('3 sigma',0.275,0.350),name='sin(θ_12)^2')
-    sin2theta13 = Observable(0.02241,('1 sigma',0.02241-0.00065,0.02241+-0.00066),('3 sigma',0.02046,0.02440),name='sin(θ_13)^2')
+    sin2theta13 = Observable(0.02241,('1 sigma',0.02241-0.00065,0.02241+0.00066),('3 sigma',0.02046,0.02440),name='sin(θ_13)^2')
     sin2theta23 = Observable(0.558,('1 sigma',0.558-0.033,0.558+0.020),('3 sigma',0.427,0.609),name='sin(θ_23)^2')
     deltaCP = Observable(222,('1 sigma',222-28,222+38),('3 sigma',141,370),name='delta_CP')
     squareDm21 = Observable(7.39,('1 sigma',7.30-0.20,7.39+0.21),('3 sigma',6.79,8.01),name='Dm21^2')*1e-5
     squareDm31 = Observable(2.523,('1 sigma',2.523-0.030,2.523+0.032),('3 sigma',2.432,2.618),name='Dm21^2')*1e-3
+    
+    def substitutions(self,th12,th13,th23):
+        '''
+        Parameters
+        ----------
+        th12,th13,th23: sympy symbols
+
+        Return a dictionary with the keys th12,th13,th23 and as values the central
+        experimental values of the mixings angles. 
+        '''
+        return {th12:asin(sqrt(self.sin2theta12.central)),
+        th13:asin(sqrt(self.sin2theta13.central)),th23:asin(sqrt(self.sin2theta23.central))}
+    
 
 
 
-#print(NuOscObservables().squareDm31.__repr__)
+#print(NuOscObservables().substitutions(1,2,3))
 
 
     
