@@ -6,7 +6,7 @@ Created on Wed Jul  8 01:07:53 2020
 @author: Moises Zeleny
 """
 from sympy import Function,symbols,solve,polylog,I,simplify,pi
-from sympy import sqrt,collect,Add,log,conjugate,re
+from sympy import sqrt,collect,Add,log,conjugate,re, integrate,lambdify
 #from sympy import init_printing
 #init_printing()
 ##################################################################################################
@@ -164,6 +164,44 @@ R0 = lambda x0,xi: Li2(x0/(x0-xi)) - Li2((x0-1)/(x0-xi))
 #R0_aprox = lambda x0,xi: Li2_aprox(x0/(x0-xi)) - Li2_aprox((x0-1)/(x0-xi))
 x0 = lambda M0,M2: (M2**2-M0**2)/ma**2
 x3 = lambda M0,M1: (-M0**2)/(M1**2-M0**2)
+
+# Definiciones para las funciones b: https://www.sciencedirect.com/science/article/pii/S0550321317301785
+y,t = symbols('y,t')
+f0 = integrate(log(1-(t/y)),(t,0,1))
+f1 = 2*integrate(t*log(1-(t/y)),(t,0,1))
+#convirtiendo f0 y f1 en funciones simbolicas
+f0sp = lambdify([y],f0,'sympy')
+f1sp = lambdify([y],f1,'sympy')
+
+#soluciones de la ecuación
+M0,M1,M2 = symbols('M_0,M_1,M_2',real=True)
+ec1 = y**2*ma**2 - y*(mi**2 + M1**2-M0**2) + M1**2
+ec2 = y**2*ma**2 - y*(mj**2 + M2**2-M0**2) + M2**2
+y11,y12 = solve(ec1,y)
+y21,y22 = solve(ec2,y)
+
+#Convirtiendo en funciones simbolicas las soluciones yij
+y11sp = lambdify([ma,mi,M0,M1],y11,'sympy')
+y12sp = lambdify([ma,mi,M0,M1],y12,'sympy')
+y21sp = lambdify([ma,mj,M0,M2],y21,'sympy')
+y22sp = lambdify([ma,mj,M0,M2],y22,'sympy')
+
+f01sum = Add(*[f0sp(y1j(ma,mi,M0,M1)) for y1j in [y11sp,y12sp ]])
+#f01sum
+
+f02sum = Add(*[f0sp(y2j(ma,mj,M0,M2)) for y2j in [y21sp,y22sp ]])
+#f02sum
+
+f11sum = Add(*[f1sp(y1j(ma,mi,M0,M1)) for y1j in [y11sp,y12sp ]])
+#f11sum
+
+f12sum = Add(*[f1sp(y2j(ma,mj,M0,M2)) for y2j in [y21sp,y22sp ]])
+#f12sum
+
+b1_0sp = lambdify([M0,M1],-log(M1**2)-f01sum,'sympy')
+b2_0sp = lambdify([M0,M2],-log(M2**2)-f02sum,'sympy')
+b1_1sp = lambdify([M0,M1],-((1/2)*(-log(M1**2))-f01sum+ (1/2)*f11sum),'sympy')
+b2_1sp = lambdify([M0,M2],(1/2)*(-log(M2**2))-f02sum+ (1/2)*f12sum,'sympy')
 # definiciones para las partes finitas de las PaVe
 class PaVe_aprox(Function):
     '''Subclass of sympy Function to show explicitly the  definition of finite 
@@ -197,16 +235,16 @@ class PaVe_aprox(Function):
             return M**2*(1+log((ma**2-I*δ)/(M**2-I*δ)))
         elif F.func==b1_0:
             M0,M1 = F.args
-            return 1-log(M1**2/ma**2) + (M0**2)/(M0**2-M1**2)*log(M1**2/M0**2)
+            return b1_0sp(M0,M1)
         elif F.func==b2_0:
             M0,M2 = F.args
-            return 1-log(M2**2/ma**2) + (M0**2)/(M0**2-M2**2)*log(M2**2/M0**2)
+            return b2_0sp(M0,M2)
         elif F.func==b1_1:
             M0,M1 = F.args
-            return -log(M1**2/ma**2)/2 + (M0**4)/(2*(M0**2-M1**2)**2)*log(M0**2/M1**2) + ((M0**2-M1**2)*(3*M0**2-M1**2))/(4*(M0**2-M1**2)**2)
+            return b1_1sp(M0,M1)
         elif F.func==b2_1:
             M0,M2 = F.args
-            return log(M2**2/ma**2)/2 + (M0**4)/(2*(M0**2-M2**2)**2)*log(M0**2/M2**2) - ((M0**2-M2**2)*(3*M0**2-M2**2))/(4*(M0**2-M2**2)**2)
+            return b1_1sp(M0,M2)
         elif F.func==b12_0:
             M1,M2 = F.args
             x1,x2 = xk(1,M1,M2),xk(2,M1,M2)

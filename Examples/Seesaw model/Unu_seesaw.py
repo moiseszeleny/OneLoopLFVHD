@@ -40,7 +40,7 @@ d31 = 2.457e-3*1e-18
 mlight ={mn2:sqrt(mn1**2 + d21),mn3:sqrt(mn1**2 + d31)}
 
 #Osc_data = Nudata().substitutions(θ12,θ13,θ23)
-from numpy import arctan as atan
+from numpy import arcsin as asin
 from numpy import sqrt
 Osc_data = {θ12:asin(sqrt(0.304)),
         θ13:asin(sqrt(0.0218)),θ23:asin(sqrt(0.452))}
