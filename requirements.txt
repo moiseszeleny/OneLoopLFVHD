@@ -3,3 +3,5 @@ numpy==1.16.*
 matplotlib==3.*
 pandas==0.24.*
 scipy==1.4.*
+numba==0.5*
+mpmath==1.*

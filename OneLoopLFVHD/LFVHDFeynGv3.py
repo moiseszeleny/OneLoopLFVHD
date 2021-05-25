@@ -5,7 +5,7 @@ Created on Wed Jul  8 01:07:53 2020
 
 @author: Moises Zeleny
 """
-from sympy import Function,symbols,solve,polylog,I,simplify,pi
+from sympy import Function,symbols,solve,polylog,I,simplify,pi,Mul
 from sympy import sqrt,collect,Add,log,conjugate,re, integrate,lambdify
 #from sympy import init_printing
 #init_printing()
@@ -42,6 +42,8 @@ B12_2 = Function('{{B^{(12)}_{2}}}')
 C0 = Function('C_0')
 C1 = Function('C_1')
 C2 = Function('C_2')
+
+#Adding factor from RD
 
 
 # Partes finitas de las funciones de PaVe en la aproximación p_i^2 = 0
@@ -148,14 +150,24 @@ class PaVetoDivFin(Function):
 _x,_m1,_m2 = symbols('x,m1,m2')
 _funcion = _x**2 - ((ma**2 -_m1**2 + _m2**2)/ma**2)*_x + (_m2**2)/ma**2
 _sols = solve(_funcion,_x)
-#_sols
-def xk(i,M1,M2):
-    if i==1:
-        return _sols[0].subs({_m1:M1,_m2:M2})
-    elif i==2:
-        return _sols[1].subs({_m1:M1,_m2:M2})
+
+#print(_sols[0].subs({_m1:1,_m2:2}))
+from sympy import Indexed
+from sympy import Symbol
+
+#print(_sols[0].atoms(Symbol))
+def xk(i,M1,M2,mh=ma):
+    if i in [1,2]:
+        if isinstance(M1,(Symbol,Mul,Indexed)) or isinstance(M2,(Symbol,Mul,Indexed)) or isinstance(mh,(Symbol,Mul,Indexed)):
+            return _sols[i-1].subs({_m1:M1,_m2:M2,ma:mh})
+        else:
+            return _sols[i-1].evalf(30,subs={_m1:M1,_m2:M2,ma:mh})
     else:
         return 'i = a 1 o 2'
+
+
+xkf = Function('x_k')
+
 
 # C0 en terminos de R0
 Li2 = lambda x0: polylog(2,x0)
@@ -208,7 +220,7 @@ class PaVe_aprox(Function):
     part of PaVe functions.
     Reference
     ---------
-    This definition are given inthe approximation given by
+    This definition are given in the approximation given by
     https://arxiv.org/abs/1512.03266v2
     
     Atributes
@@ -244,11 +256,16 @@ class PaVe_aprox(Function):
             return b1_1sp(M0,M1)
         elif F.func==b2_1:
             M0,M2 = F.args
-            return b1_1sp(M0,M2)
+            return b2_1sp(M0,M2)
         elif F.func==b12_0:
             M1,M2 = F.args
-            x1,x2 = xk(1,M1,M2),xk(2,M1,M2)
-            return log((ma**2 - I*δ)/(M1**2 - I*δ))/2 + sum(x*log(1-1/x) for x in [x1,x2])
+            x1,x2 = xkf(1,M1,M2),xkf(2,M1,M2)
+            #def log_rewrite(x):
+            #    y = 1e30
+            #    r = (y*x).expand()
+            #    return log(r) - log(y)
+            
+            return log((ma**2 - I*δ)/(M1**2 - I*δ))/2 + sum(x*(log(1-1/x)) for x in [x1,x2])
         elif F.func==b12_1:
             M1,M2 = F.args
             return (1/(2*ma**2))*(M1**2*(1+log(ma**2/M1**2)) - M2**2*(1+log(ma**2/M2**2))) + b12_0(M1,M2)/(2*ma**2)*(M2**2-M1**2 + ma**2)
@@ -258,10 +275,92 @@ class PaVe_aprox(Function):
         elif F.func==C0:
             M0,M1,M2 = F.args
             y0 = x0(M0,M2)
-            y1 = xk(1,M1,M2)
-            y2 = xk(2,M1,M2)
+            y1 = xkf(1,M1,M2)
+            y2 = xkf(2,M1,M2)
             y3 = x3(M0,M1)
             return (R0(y0,y1) + R0(y0,y2) - R0(y0,y3))/ma**2
+                
+        else:
+            raise ValueError(f'{F.func} is not defined.')
+#########################################################################
+########################################################################333
+
+cambiosx = lambda M1,M2,mh: {xkf(1,M1,M2):xk(1,M1,M2,mh),
+                             xkf(2,M1,M2):xk(2,M1,M2,mh)}
+
+class PaVe_aprox_evalf(Function):
+    '''Subclass of sympy Function to show explicitly the  definition of finite 
+    part of PaVe functions evaluated in a certain benchmark.
+    Reference
+    ---------
+    This definition are given in the approximation given by
+    https://arxiv.org/abs/1512.03266v2
+    
+    Atributes
+    ---------
+    This has the same atributtes as Function of sympy
+    
+    Methods
+    -------
+    eval(F)
+        F: Finite part of PaVe Function evaluated
+        Return numeric finite part of PaVe functions
+    
+    Example
+    -------
+    >>> from sympy import symbols
+    >>> m = symbols('m',rel=True)
+    >>> PaVe_aprox(a0(1))
+    m**2*(1+log((ma**2-I*δ)/(m**2-I*δ)))
+    '''
+    @classmethod
+    def eval(cls, F,mh,mli=0,mlj=0):
+        ####################################
+        from sympy import And,Number
+        are_true = And(*[isinstance(m,(Number)) for m in F.args])
+        if are_true:
+            pass
+        else:
+            print('This function is used when de arguments of PaVe functions are numbers')
+        #######################################
+        m0,m1,m2 = symbols('m_0,m_1,m_2',posiive=True)
+        #cambiosx = lambda M1,M2,mh: {xkf(1,M1,M2):xk(1,M1,M2,mh),
+        #                     xkf(2,M1,M2):xk(2,M1,M2,mh)}
+        if F.func==a0:
+            M = F.args[0]
+            return PaVe_aprox(a0(m0)).evalf(subs={ma:mh,m0:M})
+        elif F.func==b1_0:
+            M0,M1 = F.args
+            return PaVe_aprox(b1_0(m0,m1)).evalf(subs={ma:mh,m0:M0,m1:M1,mi:mli})#b1_0sp(M0,M1)
+        elif F.func==b2_0:
+            M0,M2 = F.args
+            return PaVe_aprox(b2_0(m0,m2)).evalf(subs={ma:mh,m0:M0,m2:M2,mj:mlj})
+        elif F.func==b1_1:
+            M0,M1 = F.args
+            return PaVe_aprox(b1_1(m0,m1)).evalf(subs={ma:mh,m0:M0,m1:M1,mi:mli})
+        elif F.func==b2_1:
+            M0,M2 = F.args
+            return PaVe_aprox(b2_1(m0,m2)).evalf(subs={ma:mh,m0:M0,m2:M2,mi:mli})
+        elif F.func==b12_0:
+            M1,M2 = F.args
+            return PaVe_aprox(b12_0(m1,m2)).subs(cambiosx(m1,m2,125.18)).evalf(subs={ma:mh,m1:M1,m2:M2})
+        elif F.func==b12_1:
+            M1,M2 = F.args
+            cambio = {b12_0(m1,m2):PaVe_aprox(b12_0(m1,m2))}
+            return PaVe_aprox(b12_1(m1,m2)).subs(cambio).subs(cambiosx(m1,m2,125.18)).evalf(subs={ma:mh,m1:M1,m2:M2})
+        elif F.func==b12_2:
+            M1,M2 = F.args
+            cambio = {b12_0(m1,m2):PaVe_aprox(b12_0(m1,m2))}
+            return PaVe_aprox(b12_2(m1,m2)).subs(cambio).subs(cambiosx(m1,m2,125.18)).evalf(subs={ma:mh,m1:M1,m2:M2})
+        #(1/(2*ma**2))*(M1**2*(1+log(ma**2/M1**2)) - M2**2*(1+log(ma**2/M2**2))) + b12_0(M1,M2)/(2*ma**2)*(M2**2-M1**2 - ma**2)
+        elif F.func==C0:
+            M0,M1,M2 = F.args
+            #y0 = x0(M0,M2)
+            #y1 = xkf(1,M1,M2)
+            #y2 = xkf(2,M1,M2)
+            #y3 = x3(M0,M1)
+            return PaVe_aprox(C0(m0,m1,m2)).subs(cambiosx(m1,m2,125.18)).evalf(subs={ma:mh,m0:M0,m1:M1,m2:M2})
+        #(R0(y0,y1) + R0(y0,y2) - R0(y0,y3))/ma**2
                 
         else:
             raise ValueError(f'{F.func} is not defined.')
@@ -272,6 +371,7 @@ FuncPaVe = lambda M0,M1,M2:[A0(M0),A0(M1),A0(M2),B1_0(M0,M1),B2_0(M0,M2),B1_1(M0
 funcPaVe = lambda M0,M1,M2:[a0(M0),a0(M1),a0(M2),b1_0(M0,M1),b2_0(M0,M2),b1_1(M0,M1),b2_1(M0,M2),b12_0(M1,M2),C0(M0,M1,M2)]
 cambiosDivFin = lambda M0,M1,M2:{PV:PaVetoDivFin(PV) for PV in FuncPaVe(M0,M1,M2)}
 cambios_aprox = lambda M0,M1,M2:{PV:PaVe_aprox(PV) for PV in funcPaVe(M0,M1,M2)}
+cambios_aprox_evalf = lambda M0,M1,M2,mh,mli,mlj:{PV:PaVe_aprox_evalf(PV,mh,mli,mlj) for PV in funcPaVe(M0,M1,M2)}
 
 # Para burbujas
 #FuncPaVeBA = lambda M0,M1,M2:[A0(M0),A0(M1),A0(M2),B1_0(M0,M1),B2_0(M0,M2),B1_1(M0,M1),B2_1(M0,M2),B12_0(M1,M2)]
@@ -312,7 +412,7 @@ XLR = lambda M0,M1,M2: 2*A0(M2) + M0**2*(B2_1(M0,M2) + B2_0(M0,M2)) + A0(M1) + M
 ##############################################
 D = symbols('D')
 HFVV = [0]*9
-#HFVV
+#HFVVsudo n stable
 HFVV[1] = lambda M0,M1,M2:-mi*(D-2)*C1(M0,M1,M2)
 #HFVV[1](M0,M1,M2)
 HFVV[2] =  lambda M0,M1,M2: (D-2)*mj*C2(M0,M1,M2)
@@ -903,11 +1003,11 @@ def Γhlilj(ML,MR,ma=125.18,mi=1.777,mj=0.1507):
     return np.nan_to_num(r)
 
 
-def BRhlilj(ML,MR,ma=125.18,mi=1.777,mj=0.1507):
-    return np.nan_to_num(Γhlilj(ML ,MR,ma,mi,mj)/(Γhlilj(ML ,MR,ma,mi,mj)+ 4.07e-3))
+#def BRhlilj(ML,MR,ma=125.18,mi=1.777,mj=0.1507):
+ #   return np.nan_to_num(Γhlilj(ML ,MR,ma,mi,mj)/(Γhlilj(ML ,MR,ma,mi,mj)+ 4.07e-3))
 
 if __name__=='__main__':
-    print('All right LFVHDFeynGv2')
+    print('All right LFVHDFeynGv3')
 
 
 
