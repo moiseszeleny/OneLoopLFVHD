@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: OneLoopLFVHD
+Version: 0.1
+Summary: Python implementation of all general one loop structures of Lepton Flavour Violation Higgs Decays
+Home-page: https://github.com/moiseszeleny/LFVHD
+Author: Moises Zeleny Mora
+Author-email: moiseszeleny@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.7.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+
+# General one loop structures of  Lepton Flavour Violation Higgs Decays.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/moiseszeleny/LFVHD/master)
+
+We code the posibles one loop feynman diagrams to Lepton Flavour Violation Higgs decays using a generic approach.
+
+
+
+
