@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -91,7 +91,7 @@
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="2HDHs%20with%20natural%20flavour%20conservation.html">
+  <a class="reference internal" href="2HDMs%20with%20natural%20flavour%20conservation.html">
    Models with natural flavour conservation
   </a>
  </li>
@@ -557,6 +557,384 @@
 
 <span class="n">YLOne12</span> <span class="o">=</span> <span class="n">speedup_array</span><span class="p">(</span><span class="n">ALOneTot12</span><span class="p">,</span><span class="n">m6np</span><span class="p">)</span>
 <span class="c1">#YLOne21 = speedup_array(ALOneTot21,m6np)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Process ForkPoolWorker-4:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Process ForkPoolWorker-1:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Process ForkPoolWorker-3:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Process ForkPoolWorker-2:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/process.py&quot;, line 315, in _bootstrap
+    self.run()
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/process.py&quot;, line 108, in run
+    self._target(*self._args, **self._kwargs)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/process.py&quot;, line 315, in _bootstrap
+    self.run()
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/process.py&quot;, line 315, in _bootstrap
+    self.run()
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/pool.py&quot;, line 125, in worker
+    result = (True, func(*args, **kwds))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/process.py&quot;, line 108, in run
+    self._target(*self._args, **self._kwargs)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/process.py&quot;, line 108, in run
+    self._target(*self._args, **self._kwargs)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/process.py&quot;, line 315, in _bootstrap
+    self.run()
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/pool.py&quot;, line 48, in mapstar
+    return list(map(*args))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/process.py&quot;, line 108, in run
+    self._target(*self._args, **self._kwargs)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-19-d396db124c5d&gt;&quot;, line 2, in ALOneTot23
+    return numeric_sum_diagramsOne(2,3,quirality=&#39;L&#39;)(m6)[1]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/pool.py&quot;, line 125, in worker
+    result = (True, func(*args, **kwds))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/pool.py&quot;, line 125, in worker
+    result = (True, func(*args, **kwds))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/pool.py&quot;, line 48, in mapstar
+    return list(map(*args))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/pool.py&quot;, line 125, in worker
+    result = (True, func(*args, **kwds))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/pool.py&quot;, line 48, in mapstar
+    return list(map(*args))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-17-af86e911b4f4&gt;&quot;, line 21, in suma
+    x = sumOne(m6,g,a,b)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-19-d396db124c5d&gt;&quot;, line 2, in ALOneTot23
+    return numeric_sum_diagramsOne(2,3,quirality=&#39;L&#39;)(m6)[1]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-17-af86e911b4f4&gt;&quot;, line 21, in suma
+    x = sumOne(m6,g,a,b)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-19-d396db124c5d&gt;&quot;, line 2, in ALOneTot23
+    return numeric_sum_diagramsOne(2,3,quirality=&#39;L&#39;)(m6)[1]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-15-86d824e0f061&gt;&quot;, line 5, in sumOne
+    A = Aab(mnk[k-1],Unu[b-1,k-1],conj(Unu[a-1,k-1]))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-17-af86e911b4f4&gt;&quot;, line 21, in suma
+    x = sumOne(m6,g,a,b)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;lambdifygenerated-46&gt;&quot;, line 2, in _lambdifygenerated
+    return (mpf((0, 471452970272491923652901502724114691325594482658112906308462200793412828096597021, -266, 268))*(mpf((0, 217079669670244466794474553585799994898102141967610879043391102347029018996398789, -285, 267))*Dummy_191*Dummy_192**2*Dummy_193*C_0(Dummy_192, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))) - mpf((0, 217079669670244466794474553585799994898102141967610879043391102347029018996398789, -285, 267))*Dummy_191*Dummy_192**2*Dummy_193*C_1(Dummy_192, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))) + mpf((0, 685370762322471788586342628032753731725807578954286511567004741796763415369556275, -285, 269))*Dummy_191*Dummy_193*C_2(Dummy_192, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))))/pi**2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-15-86d824e0f061&gt;&quot;, line 5, in sumOne
+    A = Aab(mnk[k-1],Unu[b-1,k-1],conj(Unu[a-1,k-1]))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/data.py&quot;, line 69, in &lt;lambda&gt;
+    &#39;C_2&#39;: lambda M0,M1,M2:C2(ma,mj,M0,M1,M2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;lambdifygenerated-46&gt;&quot;, line 2, in _lambdifygenerated
+    return (mpf((0, 471452970272491923652901502724114691325594482658112906308462200793412828096597021, -266, 268))*(mpf((0, 217079669670244466794474553585799994898102141967610879043391102347029018996398789, -285, 267))*Dummy_191*Dummy_192**2*Dummy_193*C_0(Dummy_192, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))) - mpf((0, 217079669670244466794474553585799994898102141967610879043391102347029018996398789, -285, 267))*Dummy_191*Dummy_192**2*Dummy_193*C_1(Dummy_192, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))) + mpf((0, 685370762322471788586342628032753731725807578954286511567004741796763415369556275, -285, 269))*Dummy_191*Dummy_193*C_2(Dummy_192, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))))/pi**2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 156, in C2
+    return ( (-1/ma**2)*(B2_0(mj,M0,M2) - B12_0(ma,M1,M2) + (M1**2-M0**2)*C0(ma,M0,M1,M2)))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 147, in C0
+    return ((R0(y0,y1) + R0(y0,y2) - R0(y0,y3))/ma**2)#*(-1j*16)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/data.py&quot;, line 69, in &lt;lambda&gt;
+    &#39;C_2&#39;: lambda M0,M1,M2:C2(ma,mj,M0,M1,M2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 26, in R0
+    return Li2(x0/(x0-xi)) - Li2((x0-1.0)/(x0-xi))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 156, in C2
+    return ( (-1/ma**2)*(B2_0(mj,M0,M2) - B12_0(ma,M1,M2) + (M1**2-M0**2)*C0(ma,M0,M1,M2)))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/multiprocessing/pool.py&quot;, line 48, in mapstar
+    return list(map(*args))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 145, in C0
+    y2 = x2(ma,M1,M2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-15-86d824e0f061&gt;&quot;, line 5, in sumOne
+    A = Aab(mnk[k-1],Unu[b-1,k-1],conj(Unu[a-1,k-1]))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-19-d396db124c5d&gt;&quot;, line 2, in ALOneTot23
+    return numeric_sum_diagramsOne(2,3,quirality=&#39;L&#39;)(m6)[1]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;lambdifygenerated-52&gt;&quot;, line 2, in _lambdifygenerated
+    return (mpf((0, 619878139641339069611579921750220823000071532473370500582362446338301049370035625, -274, 269))*(-mpf((0, 545270211513268124889783441958531805934829752162956088957147919235995172434735571, -280, 269))*Dummy_209*Dummy_210**2*Dummy_211*(C_0(Dummy_210, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))) + C_1(Dummy_210, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)))) - mpf((0, 860772132886218123355963032791323628162323240449478054894441783451281977562336935, -279, 269))*Dummy_209*Dummy_211*(-2*C_1(Dummy_210, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))) + C_2(Dummy_210, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)))))/pi**2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 22, in Li2
+    return polylog(2,x0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/roots_mpmath2.py&quot;, line 82, in x2
+    return mp.polyroots([a,b,c],extraprec=100)[1]#rootx2_estable(a,b,c)[1]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/data.py&quot;, line 69, in &lt;lambda&gt;
+    &#39;C_2&#39;: lambda M0,M1,M2:C2(ma,mj,M0,M1,M2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/ctx_mp_python.py&quot;, line 1021, in f_wrapped
+    retval = f(ctx, *args, **kwargs)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/calculus/polynomials.py&quot;, line 193, in polyroots
+    roots[i] = p - x
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 156, in C2
+    return ( (-1/ma**2)*(B2_0(mj,M0,M2) - B12_0(ma,M1,M2) + (M1**2-M0**2)*C0(ma,M0,M1,M2)))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-17-af86e911b4f4&gt;&quot;, line 21, in suma
+    x = sumOne(m6,g,a,b)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;ipython-input-15-86d824e0f061&gt;&quot;, line 5, in sumOne
+    A = Aab(mnk[k-1],Unu[b-1,k-1],conj(Unu[a-1,k-1]))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/ctx_mp_python.py&quot;, line 487, in __sub__
+    v = new(cls)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;&lt;lambdifygenerated-46&gt;&quot;, line 2, in _lambdifygenerated
+    return (mpf((0, 471452970272491923652901502724114691325594482658112906308462200793412828096597021, -266, 268))*(mpf((0, 217079669670244466794474553585799994898102141967610879043391102347029018996398789, -285, 267))*Dummy_191*Dummy_192**2*Dummy_193*C_0(Dummy_192, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))) - mpf((0, 217079669670244466794474553585799994898102141967610879043391102347029018996398789, -285, 267))*Dummy_191*Dummy_192**2*Dummy_193*C_1(Dummy_192, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))) + mpf((0, 685370762322471788586342628032753731725807578954286511567004741796763415369556275, -285, 269))*Dummy_191*Dummy_193*C_2(Dummy_192, mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265)), mpf((0, 37229009363224953887804848816053301381351952389758091587710244579888197789313663, -258, 265))))/pi**2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/data.py&quot;, line 68, in &lt;lambda&gt;
+    &#39;C_1&#39;: lambda M0,M1,M2:C1(ma,mi,M0,M1,M2),
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 152, in C1
+    return ((1/ma**2)*(B1_0(mi,M0,M1) - B12_0(ma,M1,M2) + (M2**2-M0**2)*C0(ma,M0,M1,M2)))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/functions/zeta.py&quot;, line 484, in polylog
+    return (-1)**(s+1)*polylog_series(ctx, s, 1/z) + polylog_continuation(ctx, s, z)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KeyboardInterrupt
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 26, in R0
+    return Li2(x0/(x0-xi)) - Li2((x0-1.0)/(x0-xi))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 147, in C0
+    return ((R0(y0,y1) + R0(y0,y2) - R0(y0,y3))/ma**2)#*(-1j*16)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 147, in C0
+    return ((R0(y0,y1) + R0(y0,y2) - R0(y0,y3))/ma**2)#*(-1j*16)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/functions/zeta.py&quot;, line 394, in polylog_series
+    if abs(term) &lt; tol:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/ctx_mp_python.py&quot;, line 409, in __abs__
+    v._mpf_ = mpc_abs(s._mpc_, prec, rounding)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 26, in R0
+    return Li2(x0/(x0-xi)) - Li2((x0-1.0)/(x0-xi))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/libmp/libmpc.py&quot;, line 121, in mpc_abs
+    return mpf_hypot(a, b, prec, rnd)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 22, in Li2
+    return polylog(2,x0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/libmp/libmpf.py&quot;, line 1401, in mpf_hypot
+    hypot2 = mpf_add(mpf_mul(x,x), mpf_mul(y,y), prec+4)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/ctx_mp_python.py&quot;, line 1021, in f_wrapped
+    retval = f(ctx, *args, **kwargs)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/libmp/libmpf.py&quot;, line 861, in gmpy_mpf_mul
+    return (sign, man, sexp+texp, bc)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/functions/zeta.py&quot;, line 484, in polylog
+    return (-1)**(s+1)*polylog_series(ctx, s, 1/z) + polylog_continuation(ctx, s, z)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KeyboardInterrupt
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/functions/zeta.py&quot;, line 394, in polylog_series
+    if abs(term) &lt; tol:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/libmp/libmpc.py&quot;, line 121, in mpc_abs
+    return mpf_hypot(a, b, prec, rnd)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/ctx_mp_python.py&quot;, line 409, in __abs__
+    v._mpf_ = mpc_abs(s._mpc_, prec, rounding)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/OneLoopLFVHD/LFVHDFeynG_mpmath2.py&quot;, line 22, in Li2
+    return polylog(2,x0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/libmp/libmpf.py&quot;, line 1402, in mpf_hypot
+    return mpf_sqrt(hypot2, prec, rnd)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/ctx_mp_python.py&quot;, line 1021, in f_wrapped
+    retval = f(ctx, *args, **kwargs)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/libmp/libmpf.py&quot;, line 1389, in mpf_sqrt
+    man, rem = sqrtrem(man&lt;&lt;shift)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/functions/zeta.py&quot;, line 484, in polylog
+    return (-1)**(s+1)*polylog_series(ctx, s, 1/z) + polylog_continuation(ctx, s, z)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/functions/zeta.py&quot;, line 396, in polylog_series
+    zk *= z
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KeyboardInterrupt
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/ctx_mp_python.py&quot;, line 507, in __mul__
+    v._mpc_ = mpc_mul(s._mpc_, t._mpc_, prec, rounding)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/libmp/libmpc.py&quot;, line 158, in mpc_mul
+    s = mpf_mul(b, c)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;/home/moiseszm/miniconda3/lib/python3.8/site-packages/mpmath/libmp/libmpf.py&quot;, line 855, in gmpy_mpf_mul
+    man = sman*tman
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KeyboardInterrupt
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="nn">&lt;ipython-input-9-389a330d2e1b&gt;</span> in <span class="ni">speedup_array</span><span class="nt">(f, array, procs)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">speedup_array</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">array</span><span class="p">,</span><span class="n">procs</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">pool</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">procs</span><span class="p">,</span><span class="n">maxtasksperchild</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">array</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">pool</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">~/miniconda3/lib/python3.8/multiprocessing/pool.py</span> in <span class="ni">map</span><span class="nt">(self, func, iterable, chunksize)</span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span>         <span class="ow">in</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">returned</span><span class="o">.</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span>         <span class="s1">&#39;&#39;&#39;</span>
+<span class="ne">--&gt; </span><span class="mi">364</span><span class="s1">         return self._map_async(func, iterable, mapstar, chunksize).get()</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span><span class="s1">     def starmap(self, func, iterable, chunksize=None):</span>
+
+<span class="nn">~/miniconda3/lib/python3.8/multiprocessing/pool.py</span> in <span class="ni">get</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span><span class="s1">     def get(self, timeout=None):</span>
+<span class="ne">--&gt; </span><span class="mi">765</span><span class="s1">         self.wait(timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span><span class="s1">         if not self.ready():</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span><span class="s1">             raise TimeoutError</span>
+
+<span class="nn">~/miniconda3/lib/python3.8/multiprocessing/pool.py</span> in <span class="ni">wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">761</span><span class="s1">     def wait(self, timeout=None):</span>
+<span class="ne">--&gt; </span><span class="mi">762</span><span class="s1">         self._event.wait(timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span><span class="s1"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span><span class="s1">     def get(self, timeout=None):</span>
+
+<span class="nn">~/miniconda3/lib/python3.8/threading.py</span> in <span class="ni">wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">556</span><span class="s1">             signaled = self._flag</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span><span class="s1">             if not signaled:</span>
+<span class="ne">--&gt; </span><span class="mi">558</span><span class="s1">                 signaled = self._cond.wait(timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">559</span><span class="s1">             return signaled</span>
+<span class="g g-Whitespace">    </span><span class="mi">560</span><span class="s1"> </span>
+
+<span class="nn">~/miniconda3/lib/python3.8/threading.py</span> in <span class="ni">wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">300</span><span class="s1">         try:    # restore state no matter what (e.g., KeyboardInterrupt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">301</span><span class="s1">             if timeout is None:</span>
+<span class="ne">--&gt; </span><span class="mi">302</span><span class="s1">                 waiter.acquire()</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span><span class="s1">                 gotit = True</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span><span class="s1">             else:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>

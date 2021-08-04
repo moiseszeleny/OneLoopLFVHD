@@ -10,7 +10,7 @@ Models with two Higgs doublet models and flavour conservation are given in the n
 |  Lepton-specific | $\Phi_{2}$ | $\Phi_{2}$ | $\Phi_{1}$ | 
 |      Flipped     | $\Phi_{2}$ | $\Phi_{1}$ | $\Phi_{2}$ | 
 
-where $u_{R}^{i}$, $d_{R}^{i}$ and $e_{R}^{i}$ denote up-type, down-type quarks and charged leptons respectibely. All of this are distinguished by the Yukawa sector, in particular the way in which each Higgs doublet ($\Phi_{1,2}$) interact with fermions, as it is shown in the beforementioned table. 
+where $u_{R}^{i}$, $d_{R}^{i}$ and $e_{R}^{i}$ denote up-type, down-type quarks and charged leptons respectively. All of this are distinguished by the Yukawa sector, in particular the way in which each Higgs doublet ($\Phi_{1,2}$) interact with fermions, as it is shown in the beforementioned table. 
 
 ## Lagrangian
 
@@ -89,11 +89,52 @@ where $P_{L/R}$ are projection operators for left-/right-handed fermions, and th
 
 ## Couplings for LFVHD
 
+```{list-table}
+:header-rows: 1
+:name: couplings
 
-|Vertex|coupling|Vertex|coupling|
-|-------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-|$h W^{+\mu} W^{-\nu}$|$i  \frac{m_{W}}{s_W}\sin{(\beta - \alpha)} g_{\mu \nu}$|$h G_{W}^{+} G_{W}^{-}$|$\frac{-i m_h^2}{2 s_W m_W} \sin{(\beta - \alpha)}$|
-|$h G_{W}^{+} {W}^{-\mu}$|$\frac{ig}{2}(p_{+}- p_0)_{\mu}$|$h G_{W}^{-} W^{+\mu}$|$\frac{i g}{2}\left(p_{0}-p_{-}\right)_{\mu}$|
-|$\bar{n}_{i} e_{a} W_{\mu}^{+}$|$\frac{i g}{\sqrt{2}} U_{a i}^{\nu} \gamma^{\mu} P_{L}$|$\overline{e_{a}} n_{j} W_{\mu}^{-}$|$\frac{i g}{\sqrt{2}} U_{a j}^{\nu *} \gamma^{\mu} P_{L}$|
-|$\bar{n}_{i} e_{a} G_{W}^{+}$|$-\frac{i g}{\sqrt{2} m_{W}} U_{a i}^{\nu}\left(m_{e_{a}} P_{R}-m_{n, i} P_{L}\right)$|$\overline{e_{a}} n_{j} G_{W}^{-}$|$-\frac{i g}{\sqrt{2} m_{W}} U_{a j}^{\nu *}\left(m_{e_{a}} P_{L}-m_{n, j} P_{R}\right)$|
-|$h\overline{n_i}n_j$|$\frac{-i g}{2 m_W}\left[C_{i j}\left(P_{L} m_{n_{i}}+P_{R} m_{n_{j}}\right) \quad+C_{i j}^{*}\left(P_{L} m_{n_{j}}+P_{R} m_{n_{i}}\right)\right]$|$h\overline{e_a}e_a$|$\frac{-ig m_{e_a}}{2 m_W}$|
+* - Vertex
+  - Coupling
+  - Vertex
+  - Coupling
+* - $g_{\phi W^+ W^-}$
+  - $i \frac{m_W \Xi_\phi}{s_W}$
+  - $g_{\phi G^+ G^-}$
+  - $-i \frac{m_\phi^2 \Xi_\phi}{2 m_W s_W}$
+* - $g_{\phi G^+ W^-}$
+  - $-i \frac{ \Xi_\phi}{2 s_W}(p_+ - p_0)_\mu$
+  - $g_{\phi W^+ G^-}$
+  - $-i \frac{ \Xi_\phi}{2 s_W}(p_0 - p_-)_\mu$
+* - $g_{\phi H^+ W^-}$
+  - $-i \frac{ \eta_\phi}{2 s_W}$
+  - $g_{\phi W^+ H^-}$
+  - $-i \frac{ \eta_\phi}{2 s_W}$
+* - $g_{\phi H^{\pm}G^{\mp}}$
+  - $i \frac{ \eta_\phi(m_{H^{\pm}}^2 - m_h^2)}{2 s_W m_W}$
+  - $g_{\phi H^{\pm}H^{\mp}}$
+  - $i \frac{\rho_\phi g_\phi - \Delta_\phi \mathcal{G}_\phi}{4 s_W m_W \sin{2 \beta}} + i \frac{4 \lambda_5 s_W m_W \rho_\phi}{e^2 \sin{2 \beta}}$
+* - $g_{\phi l \overline{l}}$
+  - $-i \xi_\phi^{l}\frac{m_l}{2 m_W s_W}$
+  - $g_{\phi n_i n_j}$
+  - $\frac{-i g \Xi_\phi}{2 m_W}\left[C_{i j}\left(P_{L} m_{n_{i}}+P_{R} m_{n_{j}}\right) \quad+C_{i j}^{*}\left(P_{L} m_{n_{j}}+P_{R} m_{n_{i}}\right)\right]$
+* - $\bar{n}_{i} e_{a} W_{\mu}^{+}$
+  - $\frac{i g}{\sqrt{2}} U_{a i}^{\nu} \gamma^{\mu}
+  P_{L}$
+  - $\overline{e_{a}} n_{j} W_{\mu}^{-}$
+  - $\frac{i g}{\sqrt{2}} U_{a j}^{\nu *} \gamma^{\mu} P_{L}$
+* - $\bar{n}_{i} e_{a} G_{W}^{+}$
+  - $-\frac{i g}{\sqrt{2} m_{W}} U_{a i}^{\nu}\left(m_{e_{a}}
+  P_{R}-m_{n, i} P_{L}\right)$
+  - $\overline{e_{a}} n_{j} G_{W}^{-}$
+  - $-\frac{i g}{\sqrt{2} m_{W}} U_{a j}^{\nu*}\left(m_{e_{a}} P_{L}-m_{n, j} P_{R}\right)$
+```
+where $\phi = h,H$, $\Xi_h = \sin{(\beta - \alpha)}$, $\Xi_H = \cos{(\beta - \alpha)}$, $\eta_h = \Xi_H$ and $\eta_H =-\Xi_h$. To other side $\mathcal{g}_\phi =4 m_A^2 -3 m_\phi^2-2 m_{H^\pm}^2$, $\mathcal{G}_\phi = m_\phi^2 - 2 m_{H^\pm}^2$.
+```{list-table}
+:header-rows: 1
+:name: couplings
+
+* - $\phi$
+  - $\Xi$
+  - $\eta$
+  - 
+```

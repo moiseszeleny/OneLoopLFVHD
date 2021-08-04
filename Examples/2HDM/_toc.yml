@@ -4,6 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-- file: 2HDHs with natural flavour conservation
+- file: 2HDMs with natural flavour conservation
 - file: FF_symbolc
 - file: bibliography
