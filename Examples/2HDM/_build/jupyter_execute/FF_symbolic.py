@@ -9,8 +9,8 @@
 # |-------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 # |$g_{\phi W^+ W^-}$|$ig m_W \Xi_\phi$|$g_{\phi G^+ G^-}$|$-i \frac{g m_\phi^2 \Xi_\phi}{2 m_W}$|
 # |$g_{\phi G^+ W^-}$|$-i \frac{g \Xi_\phi}{2}(p_+ - p_0)_\mu$|$g_{\phi W^+ G^-}$|$-i \frac{g \Xi_\phi}{2}(p_0 - p_-)_\mu$|
-# | $g_{\phi H^{\pm}G^{\mp}}$|$i \frac{g \eta_\phi(m_{H^{\pm}}^2 - m_h^2)}{2 m_W}$|$g_{\phi H^{\pm}H^{\mp}}$| $i \frac{\rho_\phi g_\phi - \Delta_\phi \mathcal{G}_\phi}{4 s_W m_W \sin{2 \beta}} + i \frac{4 \lambda_5 s_W m_W \rho_\phi}{e^2 \sin{2 \beta}}$|
-# |$g_{\phi l \overline{l}}$|$-i \xi_\phi^{l}\frac{m_l}{2 m_W s_W}$|$g_{\phi n_i n_j}$|$\frac{-i g \Xi_\phi}{2 m_W}\left[C_{i j}\left(P_{L} m_{n_{i}}+P_{R} m_{n_{j}}\right) \quad+C_{i j}^{*}\left(P_{L} m_{n_{j}}+P_{R} m_{n_{i}}\right)\right]$|
+# | $g_{\phi H^{\pm}G^{\mp}}$|$i \frac{g \eta_\phi(m_{H^{\pm}}^2 - m_h^2)}{2 m_W}$|$g_{\phi H^{\pm}H^{\mp}}$| $ig \frac{\rho_\phi g_\phi - \Delta_\phi \mathcal{G}_\phi}{4 m_W \sin{2 \beta}} + i \frac{4 \lambda_5  m_W \rho_\phi}{g \sin{2 \beta}}$|
+# |$g_{\phi l \overline{l}}$|$-ig \xi_\phi^{l}\frac{m_l}{2 m_W}$|$g_{\phi n_i n_j}$|$\frac{-i g \Xi_\phi}{2 m_W}\left[C_{i j}\left(P_{L} m_{n_{i}}+P_{R} m_{n_{j}}\right) \quad+C_{i j}^{*}\left(P_{L} m_{n_{j}}+P_{R} m_{n_{i}}\right)\right]$|
 # |$\bar{n}_{i}e_{a} W_{\mu}^{+}$|$\frac{i g}{\sqrt{2}} U_{a i}^{\nu} \gamma^{\mu}P_{L}$|$\overline{e_{a}}n_{j}W_{\mu}^{-}$|$\frac{i g}{\sqrt{2}} U_{a j}^{\nu *}\gamma^{\mu} P_{L}$|
 # |$\bar{n}_{i} e_{a} G_{W}^{+}$|$-\frac{i g}{\sqrt{2} m_{W}} U_{a i}^{\nu}\left(m_{e_{a}}P_{R}-m_{n, i} P_{L}\right)$|$\overline{e_{a}} n_{j} G_{W}^{-}$|$-\frac{i g}{\sqrt{2} m_{W}} U_{a j}^{\nu*}\left(m_{e_{a}} P_{L}-m_{n, j} P_{R}\right)$|
 
@@ -63,8 +63,8 @@ me
 vertexϕWW = lfvhd.VertexHVV(I*g*mW*Ξϕ)
 vertexϕGG = lfvhd.VertexHSS((-I*g*mϕ**2*Ξϕ)/(2*mW))
 
-vertexhWG = lfvhd.VertexHVpSm(I*g/2)
-vertexhGW = lfvhd.VertexHSpVm(I*g/2)
+vertexϕWG = lfvhd.VertexHVpSm(-I*g/2*Ξϕ)
+vertexϕGW = lfvhd.VertexHSpVm(-I*g/2*Ξϕ)
 
 vertexneWu =lambda i,a: lfvhd.VertexVFF(0,I*g/sqrt(2)*Uν[a,i])
 vertexenWd =lambda j,b: lfvhd.VertexVFF(0,I*g/sqrt(2)*Uνc[b,j])
@@ -91,10 +91,10 @@ vertexhee = lambda a:lfvhd.VertexHFF((-I*g*me[a])/(2*mW))
 # In[6]:
 
 
-A = g**3/(64*pi**2*mW**3) # Favtor to simplify expressions
+A = g**3/(64*pi**2*mW**3) # Factor to simplify expressions
 m = IndexedBase('m')
-h,ea,eb = symbols('h,e_a,e_b');
-cambios = {lfvhd.ma:m[h],lfvhd.mi:m[a],lfvhd.mj:m[b]}
+ϕ,ea,eb = symbols('\phi,e_a,e_b');
+cambios = {lfvhd.ma:m[ϕ],lfvhd.mi:m[a],lfvhd.mj:m[b]}
 cambios_cross = {lfvhd.ma:m[h],lfvhd.mi:m[b],lfvhd.mj:m[a]}
 
 
@@ -118,7 +118,7 @@ AL1.subs(lfvhd.cambiosDivFin(mW,mn[i],mn[j])).expand(
 
 # The **right** form factor is given by
 
-# In[9]:
+# In[ ]:
 
 
 AR1 = (-triangleGninj.AR()/A).expand().collect([C[i,j],Cc[i,j]],simplify).collect([lfvhd.C2(mW,mn[i],mn[j])]).simplify(
@@ -128,7 +128,7 @@ AR1
 
 # #### Divergent term
 
-# In[10]:
+# In[ ]:
 
 
 AR1.subs(lfvhd.cambiosDivFin(mW,mn[i],mn[j])).expand(
@@ -139,7 +139,7 @@ AR1.subs(lfvhd.cambiosDivFin(mW,mn[i],mn[j])).expand(
 # 
 # This is the diagram 2 of our reference 
 
-# In[11]:
+# In[ ]:
 
 
 triangleWninj = lfvhd.TriangleVFF(vertexhnn(i,j),vertexneWu(j,b),vertexenWd(i,a),[mW,mn[i],mn[j]])
@@ -147,7 +147,7 @@ triangleWninj = lfvhd.TriangleVFF(vertexhnn(i,j),vertexneWu(j,b),vertexenWd(i,a)
 
 # **Left form factor**
 
-# In[12]:
+# In[ ]:
 
 
 AL2 = (-triangleWninj.AL().subs(lfvhd.D,4)/A).expand().collect([C[i,j],Cc[i,j]],simplify).subs(
@@ -157,7 +157,7 @@ AL2
 
 # **Right form factor**
 
-# In[13]:
+# In[ ]:
 
 
 AR2 = (-triangleWninj.AR().subs(lfvhd.D,4)/A).expand().collect([C[i,j],Cc[i,j]],simplify).subs(
@@ -169,15 +169,15 @@ AR2
 # 
 # This is the diagram 3 of our reference 
 
-# In[14]:
+# In[15]:
 
 
-triangleniWW = lfvhd.TriangleFVV(vertexhWW,vertexneWu(i,b),vertexenWd(i,a),[mn[i],mW,mW])
+triangleniWW = lfvhd.TriangleFVV(vertexϕWW,vertexneWu(i,b),vertexenWd(i,a),[mn[i],mW,mW])
 
 
 # **Left form factor**
 
-# In[ ]:
+# In[18]:
 
 
 AL3 = (-triangleniWW.AL().subs(lfvhd.D,4)/A).subs(cambios)
@@ -186,7 +186,7 @@ AL3
 
 # **Right form factor**
 
-# In[ ]:
+# In[19]:
 
 
 (-triangleniWW.AR().subs(lfvhd.D,4)/A).subs(cambios)
@@ -196,15 +196,15 @@ AL3
 # 
 # This is the diagram 4 of our reference
 
-# In[ ]:
+# In[22]:
 
 
-triangleniWG = lfvhd.TriangleFVS(vertexhWG,vertexneGu(i,b),vertexenWd(i,a),[mn[i],mW,mW])
+triangleniWG = lfvhd.TriangleFVS(vertexϕWG,vertexneGu(i,b),vertexenWd(i,a),[mn[i],mW,mW])
 
 
 # **Left form factor**
 
-# In[ ]:
+# In[23]:
 
 
 AL4 = (-triangleniWG.AL()/A).subs(lfvhd.D,4).expand().collect(
@@ -215,7 +215,7 @@ AL4
 
 # **Right form factor**
 
-# In[ ]:
+# In[24]:
 
 
 (-triangleniWG.AR()/A).subs(lfvhd.D,4).expand().collect(
@@ -227,15 +227,15 @@ AL4
 # 
 # This is the diagram 5 of our reference
 
-# In[ ]:
+# In[25]:
 
 
-triangleniGW = lfvhd.TriangleFSV(vertexhGW,vertexneWu(i,b),vertexenGd(i,a),[mn[i],mW,mW])
+triangleniGW = lfvhd.TriangleFSV(vertexϕGW,vertexneWu(i,b),vertexenGd(i,a),[mn[i],mW,mW])
 
 
 # **Left form factor**
 
-# In[ ]:
+# In[26]:
 
 
 AL5 = (-triangleniGW.AL()/A).subs(lfvhd.D,4).expand().collect(
@@ -246,7 +246,7 @@ AL5
 
 # **Right form factor**
 
-# In[ ]:
+# In[27]:
 
 
 (-triangleniGW.AR()/A).subs(lfvhd.D,4).expand().collect(
@@ -258,15 +258,15 @@ AL5
 # 
 # This is the diagram 6 of our reference
 
-# In[ ]:
+# In[28]:
 
 
-triangleniGG = lfvhd.TriangleFSS(vertexhGG,vertexneGu(i,b),vertexenGd(i,a),[mn[i],mW,mW])
+triangleniGG = lfvhd.TriangleFSS(vertexϕGG,vertexneGu(i,b),vertexenGd(i,a),[mn[i],mW,mW])
 
 
 # **Left form factor**
 
-# In[ ]:
+# In[29]:
 
 
 AL6 = (-triangleniGG.AL()/A).expand().collect([mn[i]],simplify
@@ -276,7 +276,7 @@ AL6
 
 # **Right form factor**
 
-# In[ ]:
+# In[30]:
 
 
 (-triangleniGG.AR()/A).expand().collect([mn[i]],simplify
