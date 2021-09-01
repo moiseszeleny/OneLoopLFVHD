@@ -14,7 +14,7 @@ where $u_{R}^{i}$, $d_{R}^{i}$ and $e_{R}^{i}$ denote up-type, down-type quarks 
 
 ## Lagrangian
 
-We will in this work consider that there is no CP violation in the vacuum expectation values (vevs) of the scalar doublets $\Phi_{1,2}$ as a consecuance $v_{1,2}$ are reals. Thus
+We will in this work consider that there is no CP violation in the vacuum expectation values (vevs) of the scalar doublets $\Phi_{1,2}$ as a consecuence $v_{1,2}$ are reals. Thus
 
 $$
 \Phi_{j}=\left(\begin{array}{c}
@@ -85,6 +85,21 @@ where $P_{L/R}$ are projection operators for left-/right-handed fermions, and th
   - $\tan{\beta}$
   - $\tan{\beta}$
   - $-\cot{\beta}$
+* - $\xi_h^n$
+  - $\cos{\alpha}/\sin{\beta}$
+  - $\cos{\alpha}/\sin{\beta}$
+  - ¿?
+  - ¿?
+* - $\xi_H^n$
+  - $\sin{\alpha}/\sin{\beta}$
+  - $\sin{\alpha}/\sin{\beta}$
+  - ¿?
+  - ¿?
+* - $\xi_A^n$
+  - $\cot{\beta}$
+  - $\cot{\beta}$
+  - ¿?
+  - ¿?
 ```
 
 ## Couplings for LFVHD
@@ -114,9 +129,9 @@ where $P_{L/R}$ are projection operators for left-/right-handed fermions, and th
   - $g_{\phi H^{\pm}H^{\mp}}$
   - $i \frac{\rho_\phi g_\phi - \Delta_\phi \mathcal{G}_\phi}{4 s_W m_W \sin{2 \beta}} + i \frac{4 \lambda_5 s_W m_W \rho_\phi}{e^2 \sin{2 \beta}}$
 * - $g_{\phi l \overline{l}}$
-  - $-i \xi_\phi^{l}\frac{m_l}{2 m_W s_W}$
+  - $-ig \xi_\phi^{l}\frac{m_l}{2 m_W }$
   - $g_{\phi n_i n_j}$
-  - $\frac{-i g \Xi_\phi}{2 m_W}\left[C_{i j}\left(P_{L} m_{n_{i}}+P_{R} m_{n_{j}}\right) \quad+C_{i j}^{*}\left(P_{L} m_{n_{j}}+P_{R} m_{n_{i}}\right)\right]$
+  - $\frac{-i g \xi_\phi^n}{2 m_W}\left[C_{i j}\left(P_{L} m_{n_{i}}+P_{R} m_{n_{j}}\right) +C_{i j}^{*}\left(P_{L} m_{n_{j}}+P_{R} m_{n_{i}}\right)\right]$
 * - $\bar{n}_{i} e_{a} W_{\mu}^{+}$
   - $\frac{i g}{\sqrt{2}} U_{a i}^{\nu} \gamma^{\mu}
   P_{L}$
@@ -127,14 +142,23 @@ where $P_{L/R}$ are projection operators for left-/right-handed fermions, and th
   P_{R}-m_{n, i} P_{L}\right)$
   - $\overline{e_{a}} n_{j} G_{W}^{-}$
   - $-\frac{i g}{\sqrt{2} m_{W}} U_{a j}^{\nu*}\left(m_{e_{a}} P_{L}-m_{n, j} P_{R}\right)$
+ * - $\bar{n}_{i} e_{a} H^{+}$
+   - $\frac{i g U^{\nu}_{a i}}{\sqrt{2} m_W}(\xi_{A}^{n}m_{n_i} P_L -  \xi_{A}^{l}m_{e_a} P_R)$
+   - $\overline{e_{a}} n_{j} H^{-}$
+   - $\frac{i g U^{\nu *}_{a i}}{\sqrt{2} m_W}(-  \xi_{A}^{l}m_{e_a}P_L + \xi_{A}^{n}m_{n_i} P_R)$
 ```
 where $\phi = h,H$, $\Xi_h = \sin{(\beta - \alpha)}$, $\Xi_H = \cos{(\beta - \alpha)}$, $\eta_h = \Xi_H$ and $\eta_H =-\Xi_h$. To other side $\mathcal{g}_\phi =4 m_A^2 -3 m_\phi^2-2 m_{H^\pm}^2$, $\mathcal{G}_\phi = m_\phi^2 - 2 m_{H^\pm}^2$.
+
 ```{list-table}
 :header-rows: 1
-:name: couplings
+:name: 2hdm_couplings
 
 * - $\phi$
   - $\Xi$
   - $\eta$
-  - 
+  - $\Delta$
+* - a
+  - b
+  - c
+  - d
 ```

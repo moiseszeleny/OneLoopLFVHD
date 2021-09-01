@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -308,6 +308,24 @@ H^{\mathrm{SM}} &amp;=\rho_{1} \cos \beta+\rho_{2} \sin \beta \\
 <td><p><span class="math notranslate nohighlight">\(\tan{\beta}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(-\cot{\beta}\)</span></p></td>
 </tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\xi_h^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cos{\alpha}/\sin{\beta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cos{\alpha}/\sin{\beta}\)</span></p></td>
+<td><p>¿?</p></td>
+<td><p>¿?</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\xi_H^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sin{\alpha}/\sin{\beta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sin{\alpha}/\sin{\beta}\)</span></p></td>
+<td><p>¿?</p></td>
+<td><p>¿?</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\xi_A^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cot{\beta}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cot{\beta}\)</span></p></td>
+<td><p>¿?</p></td>
+<td><p>¿?</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -349,9 +367,9 @@ H^{\mathrm{SM}} &amp;=\rho_{1} \cos \beta+\rho_{2} \sin \beta \\
 <td><p><span class="math notranslate nohighlight">\(i \frac{\rho_\phi g_\phi - \Delta_\phi \mathcal{G}_\phi}{4 s_W m_W \sin{2 \beta}} + i \frac{4 \lambda_5 s_W m_W \rho_\phi}{e^2 \sin{2 \beta}}\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(g_{\phi l \overline{l}}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(-i \xi_\phi^{l}\frac{m_l}{2 m_W s_W}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-ig \xi_\phi^{l}\frac{m_l}{2 m_W }\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_{\phi n_i n_j}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\frac{-i g \Xi_\phi}{2 m_W}\left[C_{i j}\left(P_{L} m_{n_{i}}+P_{R} m_{n_{j}}\right) \quad+C_{i j}^{*}\left(P_{L} m_{n_{j}}+P_{R} m_{n_{i}}\right)\right]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{-i g \xi_\phi^n}{2 m_W}\left[C_{i j}\left(P_{L} m_{n_{i}}+P_{R} m_{n_{j}}\right) +C_{i j}^{*}\left(P_{L} m_{n_{j}}+P_{R} m_{n_{i}}\right)\right]\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\bar{n}_{i} e_{a} W_{\mu}^{+}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\frac{i g}{\sqrt{2}} U_{a i}^{\nu} \gamma^{\mu}
@@ -365,9 +383,36 @@ P_{R}-m_{n, i} P_{L}\right)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\overline{e_{a}} n_{j} G_{W}^{-}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(-\frac{i g}{\sqrt{2} m_{W}} U_{a j}^{\nu*}\left(m_{e_{a}} P_{L}-m_{n, j} P_{R}\right)\)</span></p></td>
 </tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\bar{n}_{i} e_{a} H^{+}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{i g U^{\nu}_{a i}}{\sqrt{2} m_W}(\xi_{A}^{n}m_{n_i} P_L -  \xi_{A}^{l}m_{e_a} P_R)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\overline{e_{a}} n_{j} H^{-}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{i g U^{\nu *}_{a i}}{\sqrt{2} m_W}(-  \xi_{A}^{l}m_{e_a}P_L + \xi_{A}^{n}m_{n_i} P_R)\)</span></p></td>
+</tr>
 </tbody>
 </table>
 <p>where <span class="math notranslate nohighlight">\(\phi = h,H\)</span>, <span class="math notranslate nohighlight">\(\Xi_h = \sin{(\beta - \alpha)}\)</span>, <span class="math notranslate nohighlight">\(\Xi_H = \cos{(\beta - \alpha)}\)</span>, <span class="math notranslate nohighlight">\(\eta_h = \Xi_H\)</span> and <span class="math notranslate nohighlight">\(\eta_H =-\Xi_h\)</span>. To other side <span class="math notranslate nohighlight">\(\mathcal{g}_\phi =4 m_A^2 -3 m_\phi^2-2 m_{H^\pm}^2\)</span>, <span class="math notranslate nohighlight">\(\mathcal{G}_\phi = m_\phi^2 - 2 m_{H^\pm}^2\)</span>.</p>
+<table class="table" id="hdm-couplings">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\phi\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\Xi\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\eta\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\Delta\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a</p></td>
+<td><p>b</p></td>
+<td><p>c</p></td>
+<td><p>d</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

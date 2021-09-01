@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -231,6 +231,13 @@
      Triangle Wninj
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#triangle-hninj">
+   Triangle Hninj
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#triangle-niww">
      Triangle niWW
@@ -251,6 +258,23 @@
      Triangle niGG
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#triangle-nihh">
+   Triangle niHH
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#triangle-nihg">
+   Triangle niHG
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#triangle-nigh">
+   Triangle niGH
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bubble-niw">
      Bubble niW
@@ -271,26 +295,22 @@
      Bubble Gni
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bubble-nih">
+     Bubble niH
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-all-contributions">
-   Adding all contributions
+  <a class="reference internal nav-link" href="#triangle-hni">
+   Triangle Hni
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#form-factor-with-two-fermion-in-the-loop">
-     Form factor with two fermion in the loop.
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#al-twofermion">
-       AL TwoFermion
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-on-divergencies">
+   Working on divergencies
+  </a>
  </li>
 </ul>
 
@@ -326,7 +346,7 @@
 <td><p><span class="math notranslate nohighlight">\(-i \frac{g \Xi_\phi}{2}(p_0 - p_-)_\mu\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(g_{\phi H^{\pm}G^{\mp}}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(i \frac{g \eta_\phi(m_{H^{\pm}}^2 - m_h^2)}{2 m_W}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i \frac{g \eta_\phi(m_{H^{\pm}}^2 - m_\phi^2)}{2 m_W}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(g_{\phi H^{\pm}H^{\mp}}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(ig \frac{\rho_\phi g_\phi - \Delta_\phi \mathcal{G}_\phi}{4 m_W \sin{2 \beta}} + i \frac{4 \lambda_5  m_W \rho_\phi}{g \sin{2 \beta}}\)</span></p></td>
 </tr>
@@ -345,11 +365,17 @@
 <td><p><span class="math notranslate nohighlight">\(\overline{e_{a}} n_{j} G_{W}^{-}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(-\frac{i g}{\sqrt{2} m_{W}} U_{a j}^{\nu*}\left(m_{e_{a}} P_{L}-m_{n, j} P_{R}\right)\)</span></p></td>
 </tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\bar{n}_{i} e_{a} H^{+}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{i g U^{\nu}_{a i}}{\sqrt{2} m_W}(\xi_{A}^{n}m_{n_i} P_L -  \xi_{A}^{l}m_{e_a} P_R)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\overline{e_{a}} n_{j} H^{-}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{i g U^{\nu *}_{a i}}{\sqrt{2} m_W}(-  \xi_{A}^{l}m_{e_a}P_L + \xi_{A}^{n}m_{n_i} P_R)\)</span></p></td>
+</tr>
 </tbody>
 </table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">init_printing</span><span class="p">,</span> <span class="n">conjugate</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">pi</span><span class="p">,</span><span class="n">IndexedBase</span><span class="p">,</span><span class="n">sqrt</span><span class="p">,</span><span class="n">Add</span><span class="p">,</span><span class="n">simplify</span><span class="p">,</span><span class="n">factor</span><span class="p">,</span><span class="n">conjugate</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
 <span class="n">init_printing</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -367,8 +393,9 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">mW</span><span class="p">,</span><span class="n">mG</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;m_W,m_G&#39;</span><span class="p">,</span><span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">mW</span><span class="p">,</span><span class="n">mG</span><span class="p">,</span> <span class="n">mHpm</span><span class="p">,</span> <span class="n">mh</span><span class="p">,</span> <span class="n">mH</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;m_W,m_G, {{m_H^{\pm}}}, m_h, m_H&#39;</span><span class="p">,</span><span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">Ξϕ</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;\Xi_{\phi}&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ξlϕ</span><span class="p">,</span> <span class="n">ξnϕ</span><span class="p">,</span> <span class="n">ξlA</span><span class="p">,</span> <span class="n">ξnA</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;{{\xi^</span><span class="si">{l}</span><span class="s1">_{\phi}}}, {{\xi^</span><span class="si">{n}</span><span class="s1">_{\phi}}}, {{\xi^</span><span class="si">{l}</span><span class="s1">_</span><span class="si">{A}</span><span class="s1">}}, {{\xi^</span><span class="si">{n}</span><span class="s1">_</span><span class="si">{A}</span><span class="s1">}}&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">Uν</span> <span class="o">=</span> <span class="n">IndexedBase</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;{{U^\nu}}&#39;</span><span class="p">)</span>
 <span class="n">Uνc</span> <span class="o">=</span> <span class="n">IndexedBase</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;{{U^{\nu *}}}&#39;</span><span class="p">)</span>
@@ -394,6 +421,9 @@
 </div>
 </div>
 <p><strong>Defining vertexes</strong></p>
+<p><span class="math notranslate nohighlight">\(ig\frac{\rho_\phi g_\phi - \Delta_\phi \mathcal{G}_\phi}{4 m_W \sin{2 \beta}} + i \frac{4 \lambda_5  m_W\rho_phi}{g \sin{2 \beta}}\)</span></p>
+<div class="math notranslate nohighlight">
+\[i \frac{g \eta_\phi(m_{H^{\pm}}^2 - m_h^2)}{2 m_W}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vertexϕWW</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexHVV</span><span class="p">(</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">mW</span><span class="o">*</span><span class="n">Ξϕ</span><span class="p">)</span>
@@ -411,10 +441,29 @@
 <span class="n">vertexenGd</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexSFF</span><span class="p">((</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">Uνc</span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">j</span><span class="p">],</span>
                                          <span class="p">(</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="n">me</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">*</span><span class="n">Uνc</span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
 
-<span class="n">vertexhnn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">:</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexHF0F0</span><span class="p">((</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">Cc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]),</span>
-                                          <span class="p">(</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">Cc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]))</span>
+<span class="c1">##############3</span>
+<span class="n">gϕ</span><span class="p">,</span> <span class="n">Gϕ</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;g_{\phi},\mathcal</span><span class="si">{G}</span><span class="s1">_\phi&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ρϕ</span><span class="p">,</span> <span class="n">Δϕ</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\rho_{\phi},\Delta_\phi&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ηϕ</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\eta_{\phi}&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">vertexhee</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexHFF</span><span class="p">((</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">me</span><span class="p">[</span><span class="n">a</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">mW</span><span class="p">))</span>
+<span class="n">λ5</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\lambda_5&#39;</span><span class="p">,</span><span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">α</span><span class="p">,</span> <span class="n">β</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\alpha, \beta&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">vertexϕHH</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexHSS</span><span class="p">(</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="p">(</span><span class="n">ρϕ</span><span class="o">*</span><span class="n">gϕ</span> <span class="o">-</span> <span class="n">Δϕ</span><span class="o">*</span><span class="n">Gϕ</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">mW</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">β</span><span class="p">))</span> <span class="o">+</span> <span class="n">I</span><span class="o">*</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">λ5</span><span class="o">*</span><span class="n">mW</span><span class="o">*</span><span class="n">ρϕ</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">g</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">β</span><span class="p">)))</span><span class="c1">########</span>
+
+<span class="n">vertexϕHG</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexHSS</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="n">g</span><span class="o">*</span><span class="n">ηϕ</span><span class="o">*</span><span class="p">(</span><span class="n">mHpm</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">mϕ</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">mW</span><span class="p">))</span>
+
+<span class="n">vertexneHu</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">:</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexSFF</span><span class="p">((</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">ξlA</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="n">me</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">*</span><span class="n">Uν</span><span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">],</span>
+                                         <span class="p">(</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">ξnA</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">Uν</span><span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">vertexenHd</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexSFF</span><span class="p">((</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">ξnA</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">Uνc</span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">j</span><span class="p">],</span>
+                                         <span class="p">(</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">ξlA</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="n">me</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">*</span><span class="n">Uνc</span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
+<span class="c1">####################3</span>
+
+<span class="n">vertexϕnn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">:</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexHF0F0</span><span class="p">((</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">ξnϕ</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">Cc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]),</span>
+                                          <span class="p">(</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">ξnϕ</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">mW</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">Cc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]))</span>
+
+<span class="n">vertexϕee</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">VertexHFF</span><span class="p">((</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">ξlϕ</span><span class="o">*</span><span class="n">me</span><span class="p">[</span><span class="n">a</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">mW</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -431,26 +480,14 @@
 <span class="n">m</span> <span class="o">=</span> <span class="n">IndexedBase</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
 <span class="n">ϕ</span><span class="p">,</span><span class="n">ea</span><span class="p">,</span><span class="n">eb</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;\phi,e_a,e_b&#39;</span><span class="p">);</span>
 <span class="n">cambios</span> <span class="o">=</span> <span class="p">{</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">ma</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">ϕ</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mi</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">a</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mj</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">b</span><span class="p">]}</span>
-<span class="n">cambios_cross</span> <span class="o">=</span> <span class="p">{</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">ma</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">h</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mi</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">b</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mj</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">a</span><span class="p">]}</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span><span class="n">dc748c106fb</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ϕ</span><span class="p">,</span><span class="n">ea</span><span class="p">,</span><span class="n">eb</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;\phi,e_a,e_b&#39;</span><span class="p">);</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">cambios</span> <span class="o">=</span> <span class="p">{</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">ma</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">ϕ</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mi</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">a</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mj</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">b</span><span class="p">]}</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">cambios_cross</span> <span class="o">=</span> <span class="p">{</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">ma</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">h</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mi</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">b</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mj</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">a</span><span class="p">]}</span>
-
-<span class="ne">NameError</span>: name &#39;h&#39; is not defined
+<span class="n">cambios_cross</span> <span class="o">=</span> <span class="p">{</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">ma</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">ϕ</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mi</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">b</span><span class="p">],</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">mj</span><span class="p">:</span><span class="n">m</span><span class="p">[</span><span class="n">a</span><span class="p">]}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangleGninj</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">TriangleSFF</span><span class="p">(</span><span class="n">vertexhnn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span><span class="n">vertexneGu</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenGd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mW</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangleGninj</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">TriangleSFF</span><span class="p">(</span><span class="n">vertexϕnn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span><span class="n">vertexneGu</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenGd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mW</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span>
 <span class="n">AL1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleGninj</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span><span class="n">Cc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]],</span><span class="n">simplify</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">triangleGninj</span><span class="o">.</span><span class="n">Cs</span>
                                                             <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
 <span class="n">AL1</span>
@@ -465,8 +502,9 @@
 <h4>Divergent term<a class="headerlink" href="#divergent-term" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AL1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mW</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DivGninjL</span> <span class="o">=</span> <span class="n">AL1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mW</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span>
 <span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">],</span><span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">]</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">*</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span>
+<span class="n">DivGninjL</span> 
 </pre></div>
 </div>
 </div>
@@ -483,16 +521,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_18_0.png" src="_images/FF_symbolic_18_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="id1">
 <h4>Divergent term<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mW</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DivGninjR</span> <span class="o">=</span> <span class="n">AR1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mW</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span>
 <span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">],</span><span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">]</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">*</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span>
+<span class="n">DivGninjR</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_20_0.png" src="_images/FF_symbolic_20_0.png" />
 </div>
 </div>
 </div>
@@ -502,7 +547,7 @@
 <p>This is the diagram 2 of our reference</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangleWninj</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">TriangleVFF</span><span class="p">(</span><span class="n">vertexhnn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span><span class="n">vertexneWu</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenWd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mW</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangleWninj</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">TriangleVFF</span><span class="p">(</span><span class="n">vertexϕnn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span><span class="n">vertexneWu</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenWd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mW</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
@@ -516,6 +561,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_24_0.png" src="_images/FF_symbolic_24_0.png" />
+</div>
 </div>
 <p><strong>Right form factor</strong></p>
 <div class="cell docutils container">
@@ -526,6 +574,63 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_26_0.png" src="_images/FF_symbolic_26_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="triangle-hninj">
+<h2>Triangle Hninj<a class="headerlink" href="#triangle-hninj" title="Permalink to this headline">¶</a></h2>
+<p>This is a new diagram</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangleHninj</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">TriangleSFF</span><span class="p">(</span><span class="n">vertexϕnn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span><span class="n">vertexneHu</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenHd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mHpm</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span>
+<span class="n">AL11</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleHninj</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span><span class="n">Cc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]],</span><span class="n">simplify</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">triangleHninj</span><span class="o">.</span><span class="n">Cs</span>
+                                                            <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AL11</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_28_0.png" src="_images/FF_symbolic_28_0.png" />
+</div>
+</div>
+<p><strong>Termino divergente</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DivHninjL</span> <span class="o">=</span> <span class="n">AL11</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mHpm</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span>
+<span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">],</span><span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">]</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">*</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span>
+<span class="n">DivHninjL</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_30_0.png" src="_images/FF_symbolic_30_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR11</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleHninj</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span><span class="n">Cc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]],</span><span class="n">simplify</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">triangleHninj</span><span class="o">.</span><span class="n">Cs</span>
+                                                            <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AR11</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_31_0.png" src="_images/FF_symbolic_31_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DivHninjR</span> <span class="o">=</span> <span class="n">AR11</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mHpm</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span>
+<span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">],</span><span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">]</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">*</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span>
+<span class="n">DivHninjR</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_32_0.png" src="_images/FF_symbolic_32_0.png" />
 </div>
 </div>
 <div class="section" id="triangle-niww">
@@ -547,7 +652,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FF_symbolic_30_0.png" src="_images/FF_symbolic_30_0.png" />
+<img alt="_images/FF_symbolic_36_0.png" src="_images/FF_symbolic_36_0.png" />
 </div>
 </div>
 <p><strong>Right form factor</strong></p>
@@ -558,7 +663,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FF_symbolic_32_0.png" src="_images/FF_symbolic_32_0.png" />
+<img alt="_images/FF_symbolic_38_0.png" src="_images/FF_symbolic_38_0.png" />
 </div>
 </div>
 </div>
@@ -583,20 +688,21 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FF_symbolic_36_0.png" src="_images/FF_symbolic_36_0.png" />
+<img alt="_images/FF_symbolic_42_0.png" src="_images/FF_symbolic_42_0.png" />
 </div>
 </div>
 <p><strong>Right form factor</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">-</span><span class="n">triangleniWG</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR4</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleniWG</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span>
     <span class="p">[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">C0</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">),</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">C1</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">),</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">C2</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">)],</span><span class="n">simplify</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span>
 <span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AR4</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FF_symbolic_38_0.png" src="_images/FF_symbolic_38_0.png" />
+<img alt="_images/FF_symbolic_44_0.png" src="_images/FF_symbolic_44_0.png" />
 </div>
 </div>
 </div>
@@ -621,20 +727,21 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FF_symbolic_42_0.png" src="_images/FF_symbolic_42_0.png" />
+<img alt="_images/FF_symbolic_48_0.png" src="_images/FF_symbolic_48_0.png" />
 </div>
 </div>
 <p><strong>Right form factor</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">-</span><span class="n">triangleniGW</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR5</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleniGW</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span>
     <span class="p">[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">C0</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">),</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">C1</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">),</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">C2</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">)],</span><span class="n">simplify</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span>
 <span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AR5</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FF_symbolic_44_0.png" src="_images/FF_symbolic_44_0.png" />
+<img alt="_images/FF_symbolic_50_0.png" src="_images/FF_symbolic_50_0.png" />
 </div>
 </div>
 </div>
@@ -658,20 +765,124 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FF_symbolic_48_0.png" src="_images/FF_symbolic_48_0.png" />
+<img alt="_images/FF_symbolic_54_0.png" src="_images/FF_symbolic_54_0.png" />
 </div>
 </div>
 <p><strong>Right form factor</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">-</span><span class="n">triangleniGG</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">simplify</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ALR6</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleniGG</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">simplify</span>
                                   <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">ALR6</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/FF_symbolic_50_0.png" src="_images/FF_symbolic_50_0.png" />
+<img alt="_images/FF_symbolic_56_0.png" src="_images/FF_symbolic_56_0.png" />
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="triangle-nihh">
+<h2>Triangle niHH<a class="headerlink" href="#triangle-nihh" title="Permalink to this headline">¶</a></h2>
+<p>This is a new diagram</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangleniHH</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">TriangleFSS</span><span class="p">(</span><span class="n">vertexϕHH</span><span class="p">,</span><span class="n">vertexneHu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenHd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">,</span><span class="n">mHpm</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AL12</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleniHH</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">simplify</span>
+                                      <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AL12</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_59_0.png" src="_images/FF_symbolic_59_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR12</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleniHH</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">simplify</span>
+                                      <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AR12</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_60_0.png" src="_images/FF_symbolic_60_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="triangle-nihg">
+<h2>Triangle niHG<a class="headerlink" href="#triangle-nihg" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangleniHG</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">TriangleFSS</span><span class="p">(</span><span class="n">vertexϕHG</span><span class="p">,</span><span class="n">vertexneGu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenHd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">,</span><span class="n">mW</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AL13</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleniHG</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">simplify</span>
+                                      <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AL13</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_63_0.png" src="_images/FF_symbolic_63_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR13</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleniHG</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">simplify</span>
+                                      <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AR13</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_64_0.png" src="_images/FF_symbolic_64_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="triangle-nigh">
+<h2>Triangle niGH<a class="headerlink" href="#triangle-nigh" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangleniGH</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">TriangleFSS</span><span class="p">(</span><span class="n">vertexϕHG</span><span class="p">,</span><span class="n">vertexneHu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenGd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mHpm</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AL14</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleniGH</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">simplify</span>
+                                      <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AL14</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_67_0.png" src="_images/FF_symbolic_67_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR14</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">triangleniGH</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">simplify</span>
+                                      <span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AR14</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_68_0.png" src="_images/FF_symbolic_68_0.png" />
 </div>
 </div>
 <div class="section" id="bubble-niw">
@@ -679,7 +890,7 @@
 <p>This is the diagram 7 of our reference</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleniW</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleFV</span><span class="p">(</span><span class="n">vertexhee</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="n">vertexneWu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenWd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleniW</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleFV</span><span class="p">(</span><span class="n">vertexϕee</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="n">vertexneWu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenWd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -692,13 +903,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_72_0.png" src="_images/FF_symbolic_72_0.png" />
+</div>
 </div>
 <p><strong>Right form factor</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">-</span><span class="n">bubbleniW</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR7</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">bubbleniW</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AR7</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_74_0.png" src="_images/FF_symbolic_74_0.png" />
 </div>
 </div>
 </div>
@@ -707,7 +925,7 @@
 <p>This is the diagram 9 of our reference</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleWni</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleVF</span><span class="p">(</span><span class="n">vertexhee</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">vertexneWu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenWd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleWni</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleVF</span><span class="p">(</span><span class="n">vertexϕee</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">vertexneWu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenWd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -720,22 +938,32 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_78_0.png" src="_images/FF_symbolic_78_0.png" />
+</div>
 </div>
 <p><strong>Right form factor</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">-</span><span class="n">bubbleWni</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR9</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">bubbleWni</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">AR9</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_80_0.png" src="_images/FF_symbolic_80_0.png" />
 </div>
 </div>
 <p><strong>Adding bubble niW y Wni</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BniW_L</span> <span class="o">=</span>  <span class="p">(</span><span class="n">bubbleniW</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span> <span class="o">+</span> <span class="n">bubbleWni</span><span class="o">.</span><span class="n">AL</span><span class="p">())</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
-<span class="n">BniW_L</span>
+<span class="n">BniW_L</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_82_0.png" src="_images/FF_symbolic_82_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -745,12 +973,8 @@
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BniW_L</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">))</span>
-</pre></div>
-</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_83_0.png" src="_images/FF_symbolic_83_0.png" />
 </div>
 </div>
 </div>
@@ -759,7 +983,7 @@
 <p>This is the diagram 8 of our reference</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleniG</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleFS</span><span class="p">(</span><span class="n">vertexhee</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="n">vertexneGu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenGd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleniG</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleFS</span><span class="p">(</span><span class="n">vertexϕee</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="n">vertexneGu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenGd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -773,6 +997,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_87_0.png" src="_images/FF_symbolic_87_0.png" />
+</div>
 </div>
 <p><strong>Right form factor</strong></p>
 <div class="cell docutils container">
@@ -783,6 +1010,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_89_0.png" src="_images/FF_symbolic_89_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="bubble-gni">
@@ -790,7 +1020,7 @@
 <p>This is the diagram 10 of our reference</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleGni</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleSF</span><span class="p">(</span><span class="n">vertexhee</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">vertexneGu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenGd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleGni</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleSF</span><span class="p">(</span><span class="n">vertexϕee</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">vertexneGu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenGd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -804,6 +1034,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_93_0.png" src="_images/FF_symbolic_93_0.png" />
+</div>
 </div>
 <p><strong>Right form factor</strong></p>
 <div class="cell docutils container">
@@ -814,115 +1047,126 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_95_0.png" src="_images/FF_symbolic_95_0.png" />
+</div>
 </div>
 <p><strong>Adding bubble niG y Gni</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DivniG</span> <span class="o">=</span> <span class="p">((</span><span class="n">AL8</span> <span class="o">+</span> <span class="n">AL10</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span>
-<span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">,</span><span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">]</span><span class="o">*</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">*</span><span class="n">A</span>
-<span class="n">DivniG</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DivniGL</span> <span class="o">=</span> <span class="p">((</span><span class="n">AL8</span> <span class="o">+</span> <span class="n">AL10</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mW</span><span class="p">,</span><span class="n">mW</span><span class="p">))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span>
+<span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">,</span><span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">]</span><span class="o">*</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">DivniGL</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_97_0.png" src="_images/FF_symbolic_97_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="bubble-nih">
+<h3>Bubble niH<a class="headerlink" href="#bubble-nih" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleniH</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleFS</span><span class="p">(</span><span class="n">vertexϕee</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="n">vertexneHu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenHd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DivL1</span> <span class="o">=</span> <span class="o">-</span><span class="n">triangleGninj</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span>
-    <span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mW</span><span class="p">,</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">,</span><span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">]</span><span class="o">*</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span>
-<span class="n">DivL1</span> <span class="o">=</span> <span class="n">DivL1</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">Cc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]:</span><span class="mi">1</span><span class="p">,</span><span class="n">Uν</span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">j</span><span class="p">]:</span><span class="n">Uν</span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">i</span><span class="p">],</span><span class="n">mn</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]})</span>
-<span class="n">DivL1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AL15</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">bubbleniH</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span>
+    <span class="n">lfvhd</span><span class="o">.</span><span class="n">B1_0</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">),</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">B1_1</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">)])</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AL15</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_100_0.png" src="_images/FF_symbolic_100_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR15</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">bubbleniH</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span>
+    <span class="n">lfvhd</span><span class="o">.</span><span class="n">B1_0</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">),</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">B1_1</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">)])</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AR15</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_101_0.png" src="_images/FF_symbolic_101_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="triangle-hni">
+<h2>Triangle Hni<a class="headerlink" href="#triangle-hni" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubbleHni</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">BubbleSF</span><span class="p">(</span><span class="n">vertexϕee</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">vertexneHu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">vertexenHd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">),[</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DivniG</span> <span class="o">+</span> <span class="n">DivL1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AL16</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">bubbleHni</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span>
+    <span class="n">lfvhd</span><span class="o">.</span><span class="n">B2_0</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">),</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">B2_1</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">)])</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AL16</span>
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="adding-all-contributions">
-<h2>Adding all contributions<a class="headerlink" href="#adding-all-contributions" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Symbol</span><span class="p">,</span><span class="n">lambdify</span>
-</pre></div>
-</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_104_0.png" src="_images/FF_symbolic_104_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TrianglesTwoFermion</span> <span class="o">=</span> <span class="p">[</span><span class="n">triangleGninj</span><span class="p">,</span><span class="n">triangleWninj</span><span class="p">]</span>
-<span class="n">TrianglesOneFermion</span> <span class="o">=</span> <span class="p">[</span><span class="n">triangleniWW</span><span class="p">,</span>
-         <span class="n">triangleniWG</span><span class="p">,</span><span class="n">triangleniGW</span><span class="p">,</span>
-         <span class="n">triangleniGG</span><span class="p">]</span>
-<span class="n">Bubbles</span> <span class="o">=</span> <span class="p">[</span><span class="n">bubbleniW</span><span class="p">,</span><span class="n">bubbleniG</span><span class="p">,</span><span class="n">bubbleWni</span><span class="p">,</span><span class="n">bubbleGni</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AR16</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">bubbleHni</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">/</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span>
+    <span class="n">lfvhd</span><span class="o">.</span><span class="n">B2_0</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">),</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">B2_1</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">)])</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">cambios</span><span class="p">)</span>
+<span class="n">AR16</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_105_0.png" src="_images/FF_symbolic_105_0.png" />
+</div>
+</div>
+<p><strong>Adding bubbles niH and Hni</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DivniHL</span> <span class="o">=</span> <span class="p">((</span><span class="n">AL15</span> <span class="o">+</span> <span class="n">AL16</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">mHpm</span><span class="p">,</span><span class="n">mHpm</span><span class="p">))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span>
+<span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">,</span><span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">]</span><span class="o">*</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">DivniHL</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_107_0.png" src="_images/FF_symbolic_107_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="working-on-divergencies">
+<h2>Working on divergencies<a class="headerlink" href="#working-on-divergencies" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">DivGninjL</span> <span class="o">+</span> <span class="n">DivniGL</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_109_0.png" src="_images/FF_symbolic_109_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ALOneFermion</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">AROneFermion</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">for</span> <span class="n">topology</span> <span class="ow">in</span> <span class="p">[</span><span class="n">TrianglesOneFermion</span><span class="p">,</span><span class="n">Bubbles</span><span class="p">]:</span>
-    <span class="k">for</span> <span class="n">diag</span> <span class="ow">in</span> <span class="n">topology</span><span class="p">:</span>
-        <span class="n">masas</span> <span class="o">=</span> <span class="n">diag</span><span class="o">.</span><span class="n">masas</span>
-        <span class="c1">#display(masas)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">masas</span><span class="p">)</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
-            <span class="n">splitting</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="o">*</span><span class="n">masas</span><span class="p">)</span>
-            <span class="n">aprroximation</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">cambios_aprox</span><span class="p">(</span><span class="o">*</span><span class="n">masas</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">splitting</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="o">*</span><span class="n">masas</span><span class="p">,</span><span class="n">mW</span><span class="p">)</span>
-            <span class="n">aprroximation</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">cambios_aprox</span><span class="p">(</span><span class="o">*</span><span class="n">masas</span><span class="p">,</span><span class="n">mW</span><span class="p">)</span>
-        <span class="n">AL</span> <span class="o">=</span> <span class="n">diag</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">splitting</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">AR</span> <span class="o">=</span> <span class="n">diag</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">splitting</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">ALOneFermion</span> <span class="o">+=</span> <span class="n">AL</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">aprroximation</span><span class="p">)</span><span class="c1">#.subs(cambios)</span>
-        <span class="n">AROneFermion</span> <span class="o">+=</span> <span class="n">AR</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">aprroximation</span><span class="p">)</span><span class="c1">#.subs(cambios)</span>
-        <span class="n">display</span><span class="p">(</span><span class="n">ALOneFermion</span><span class="o">.</span><span class="n">atoms</span><span class="p">(</span><span class="n">Symbol</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">DivHninjL</span> <span class="o">+</span> <span class="n">DivniHL</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">ALOneFermion</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">([</span><span class="n">mn</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="form-factor-with-two-fermion-in-the-loop">
-<h3>Form factor with two fermion in the loop.<a class="headerlink" href="#form-factor-with-two-fermion-in-the-loop" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ALTwoFermion</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">ARTwoFermion</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">for</span> <span class="n">diag</span> <span class="ow">in</span> <span class="n">TrianglesTwoFermion</span><span class="p">:</span>
-    <span class="n">masas</span> <span class="o">=</span> <span class="n">diag</span><span class="o">.</span><span class="n">masas</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">masas</span><span class="p">)</span>
-    <span class="n">splitting</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">cambiosDivFin</span><span class="p">(</span><span class="o">*</span><span class="n">masas</span><span class="p">)</span>
-    <span class="n">aprroximation</span> <span class="o">=</span> <span class="n">lfvhd</span><span class="o">.</span><span class="n">cambios_aprox</span><span class="p">(</span><span class="o">*</span><span class="n">masas</span><span class="p">)</span>
-    <span class="n">AL</span> <span class="o">=</span> <span class="n">diag</span><span class="o">.</span><span class="n">AL</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">splitting</span><span class="p">)</span>
-    <span class="n">AR</span> <span class="o">=</span> <span class="n">diag</span><span class="o">.</span><span class="n">AR</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">splitting</span><span class="p">)</span>
-    <span class="n">ALTwoFermion</span> <span class="o">+=</span> <span class="n">AL</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span>
-    <span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">aprroximation</span><span class="p">)</span>
-    <span class="n">ARTwoFermion</span> <span class="o">+=</span> <span class="n">AR</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">lfvhd</span><span class="o">.</span><span class="n">D</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span>
-    <span class="n">lfvhd</span><span class="o">.</span><span class="n">Δe</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">aprroximation</span><span class="p">)</span>
-    
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="al-twofermion">
-<h4>AL TwoFermion<a class="headerlink" href="#al-twofermion" title="Permalink to this headline">¶</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ALTwoFermion</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
+<div class="cell_output docutils container">
+<img alt="_images/FF_symbolic_110_0.png" src="_images/FF_symbolic_110_0.png" />
 </div>
 </div>
 </div>
