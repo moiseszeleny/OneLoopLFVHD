@@ -7,7 +7,7 @@ Created on Thur May  13 02:18:53 2021
 """
 
 from sympy import symbols, init_printing, conjugate,I,IndexedBase,sqrt,collect,simplify
-from sympy import lambdify
+from sympy import lambdify, Add
 
 import OneLoopLFVHD as lfvhd
 mh,mi,mj = lfvhd.ma,lfvhd.mi,lfvhd.mj
@@ -47,6 +47,9 @@ nlW = lfvhd.BubbleFV(hljlj,Wuljνl,Wdliνl,[mnul,mW])
 Wnl = lfvhd.BubbleVF(hlili,Wuljνl,Wdliνl ,[mnul,mW])
 nlG = lfvhd.BubbleFS(hljlj,Guljνl,Gdliνl,[mnul,mW])
 Gnl = lfvhd.BubbleSF(hlili,Guljνl,Gdliνl,[mnul,mW])
+
+Diagrams = [νlGG, νlGW, νlWG, νlWW, nlW, Wnl, nlG, Gnl]
+print(Add(*[D.AL() for D in Diagrams]).expand().collect([mnul],evaluate=False)[mnul**2])
 
 ### Lamdifyng
 from OneLoopLFVHD.data import ml

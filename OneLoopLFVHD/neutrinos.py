@@ -100,7 +100,7 @@ def UpmnsStandardParametrization(theta12,theta13,theta23,delta=0,alpha1=0,alpha2
     s12,s13,s23 = sin(theta12), sin(theta13), sin(theta23)
     UPMNS = Matrix(
         [[exp(I*(alpha1/2))*c12*c13,exp(I*(alpha2/2))*c13*s12,exp(-I*delta)*s13],
-    [exp(I*(alpha1/2))*(-c12*s12-c12*s13*s23), exp(I*(alpha2/2))*(c12*c23 - s12*s13*s23), c13*s23],
+    [exp(I*(alpha1/2))*(-c23*s12-c12*s13*s23), exp(I*(alpha2/2))*(c12*c23 - s12*s13*s23), c13*s23],##corrección in U_21
     [exp(I*(alpha1/2))*(-c12*c23*s13 + s12*s23), exp(I*(alpha2/2))*(-c23*s12*s13-c12*s23), c13*c23]]
     )
     return UPMNS

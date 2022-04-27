@@ -236,7 +236,7 @@ class PaVe_aprox(Function):
     Example
     -------
     >>> from sympy import symbols
-    >>> m = symbols('m',rel=True)
+    >>> m = symbols('m',real=True)
     >>> PaVe_aprox(a0(m))
     m**2*(1+log((ma**2-I*δ)/(m**2-I*δ)))
     '''
@@ -309,7 +309,7 @@ class PaVe_aprox_evalf(Function):
     Example
     -------
     >>> from sympy import symbols
-    >>> m = symbols('m',rel=True)
+    >>> m = symbols('m',real=True)
     >>> PaVe_aprox(a0(1))
     m**2*(1+log((ma**2-I*δ)/(m**2-I*δ)))
     '''

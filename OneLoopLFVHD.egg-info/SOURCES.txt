@@ -1,5 +1,6 @@
 LICENSE
 README.md
+pyproject.toml
 setup.py
 OneLoopLFVHD/LFVHDFeynG_mpmath.py
 OneLoopLFVHD/LFVHDFeynG_mpmath2.py
