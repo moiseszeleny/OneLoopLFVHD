@@ -7,6 +7,7 @@ Created on Wed Feb 16  01:27:53 2021
 """
 from numpy import sqrt,log,conjugate,pi, where,array, vectorize,complex128, complex256,float64, float128
 from numpy import nan_to_num
+from numpy import sum as sumnp
 from numpy import abs as npabs
 
 δ = 0
@@ -85,7 +86,7 @@ R0 = lambda x0,xi: Li2(x0/(x0-xi)) - Li2((x0-1.0)/(x0-xi))
 
 #R0_aprox = lambda x0,xi: Li2_aprox(x0/(x0-xi)) - Li2_aprox((x0-1)/(x0-xi))
 x0 = lambda ma,M0,M2: (M2**2-M0**2)/ma**2
-def x3(ma,M0,M1): 
+def x3(M0,M1): 
     return (-M0**2)/(M1**2-M0**2)#where(M1!=M0,(-M0**2)/(M1**2-M0**2),nan_to_num((-M0**2)/(M1**2-M0**2)))
 
 # Definiciones para las funciones b: https://www.sciencedirect.com/science/article/pii/S0550321317301785
@@ -176,22 +177,22 @@ from .roots import y22 as y22np
 
 #y2j = vectorize(y2j)
 
-f01sum = lambda ma,mi,M0,M1:sum(f0np(yi1j(ma,mi,M0,M1)) for yi1j in [y11np,y12np ])
+f01sum = lambda mi,M0,M1:f0np(y11np(mi,M0,M1)) + f0np(y12np(mi,M0,M1))#sumnp(f0np(yi1j(mi,M0,M1)) for yi1j in [y11np,y12np ])
 #f01sum
 
-f02sum = lambda ma,mj,M0,M2:sum(f0np(yi2j(ma,mj,M0,M2)) for yi2j in [y21np,y22np ])
+f02sum = lambda mj,M0,M2:f0np(y21np(mj,M0,M2)) + f0np(y22np(mj,M0,M2))#sumnp(f0np(yi2j(mj,M0,M2)) for yi2j in [y21np,y22np ])
 #f02sum
 
-f11sum = lambda ma,mi,M0,M1:sum(f1np(yi1j(ma,mi,M0,M1)) for yi1j in [y11np, y12np ])
+f11sum = lambda mi,M0,M1:f1np(y11np(mi,M0,M1)) + f1np(y12np(mi,M0,M1))#sumnp(f1np(yi1j(mi,M0,M1)) for yi1j in [y11np, y12np ])
 #f11sum
 
-f12sum = lambda ma,mj,M0,M2:sum(f1np(yi2j(ma,mj,M0,M2)) for yi2j in [y21np, y22np])
+f12sum = lambda mj,M0,M2:f1np(y21np(mj,M0,M2)) + f1np(y22np(mj,M0,M2))#sumnp(f1np(yi2j(mj,M0,M2)) for yi2j in [y21np, y22np])
 #f12sum
 
-b1_0np = lambda ma,mi,M0,M1:-log(M1**2)-f01sum(ma,mi,M0,M1)
-b2_0np = lambda ma,mj,M0,M2: -log(M2**2)-f02sum(ma,mj,M0,M2)
-b1_1np = lambda ma,mi,M0,M1 :-((1/2)*(-log(M1**2))-f01sum(ma,mi,M0,M1)+ (1/2)*f11sum(ma,mi,M0,M1)) 
-b2_1np = lambda ma,mj,M0,M2: (1/2)*(-log(M2**2))-f02sum(ma,mj,M0,M2) + (1/2)*f12sum(ma,mj,M0,M2)
+b1_0np = lambda mi,M0,M1:-log(M1**2)-f01sum(mi,M0,M1)
+b2_0np = lambda mj,M0,M2: -log(M2**2)-f02sum(mj,M0,M2)
+b1_1np = lambda mi,M0,M1 :-((1/2)*(-log(M1**2))-f01sum(mi,M0,M1)+ (1/2)*f11sum(mi,M0,M1)) 
+b2_1np = lambda mj,M0,M2: (1/2)*(-log(M2**2))-f02sum(mj,M0,M2) + (1/2)*f12sum(mj,M0,M2)
 
 #########################################################################
 # Numpy definitions of PaVe functions
@@ -199,10 +200,10 @@ a1 = 1j/(16*pi**2)
 a2 = -1j/pi**2
 
 A0 = lambda ma,M:  M**2*(1+log((ma**2)/(M**2)))
-B1_0 = lambda ma,mi,M0,M1: b1_0np(ma,mi,M0,M1)
-B2_0 = lambda ma,mj,M0,M2: b2_0np(ma,mj,M0,M2)
-B1_1 = lambda ma,mi,M0,M1: b1_1np(ma,mi,M0,M1)
-B2_1 = lambda ma,mj,M0,M2: b2_1np(ma,mj,M0,M2)
+B1_0 = lambda mi,M0,M1: b1_0np(mi,M0,M1)
+B2_0 = lambda mj,M0,M2: b2_0np(mj,M0,M2)
+B1_1 = lambda mi,M0,M1: b1_1np(mi,M0,M1)
+B2_1 = lambda mj,M0,M2: b2_1np(mj,M0,M2)
 
 #from numpy import log1p # log1p(x) = log(1+x) #####IMPORTANTE
 def B12_0(ma,M1,M2):
@@ -219,11 +220,11 @@ def C0(ma,M0,M1,M2):
     y0 = x0(ma,M0,M2)
     y1 = x1(ma,M1,M2)
     y2 = x2(ma,M1,M2)
-    y3 = x3(ma,M0,M1)
+    y3 = x3(M0,M1)
     return ((R0(y0,y1) + R0(y0,y2) - R0(y0,y3))/ma**2)
 
-C1 = lambda ma,mi,M0,M1,M2: ((1/ma**2)*(B1_0(ma,mi,M0,M1) - B12_0(ma,M1,M2) + (M2**2-M0**2)*C0(ma,M0,M1,M2)))
-C2 = lambda ma,mj,M0,M1,M2:( (-1/ma**2)*(B2_0(ma,mj,M0,M2) - B12_0(ma,M1,M2) + (M1**2-M0**2)*C0(ma,M0,M1,M2)))
+C1 = lambda ma,mi,M0,M1,M2: ((1/ma**2)*(B1_0(mi,M0,M1) - B12_0(ma,M1,M2) + (M2**2-M0**2)*C0(ma,M0,M1,M2)))
+C2 = lambda ma,mj,M0,M1,M2:( (-1/ma**2)*(B2_0(mj,M0,M2) - B12_0(ma,M1,M2) + (M1**2-M0**2)*C0(ma,M0,M1,M2)))
 
 
 

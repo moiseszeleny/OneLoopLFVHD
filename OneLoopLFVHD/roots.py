@@ -5,7 +5,7 @@ Created on Wed March 15  15:50:00 2021
 
 @author: Moises Zeleny
 """
-from numpy import sqrt, complex256, roots
+from numpy import sqrt, complex256, roots, vectorize
 from numpy import abs as npabs
 
 
@@ -74,29 +74,33 @@ def x2(ma,M1,M2):
 #######################3
 #### Roots of y11, y12s
 ########################
-def y11(ma,mi,M0,M1):
-    a = ma**2
-    b = - (mi**2 + M1**2-M0**2)
-    c = M1**2
+def y11(mi,M0,M1):
+    a = mi**2
+    b = - (mi**2 + M0**2-M1**2)
+    c = M0**2
     return roots([a,b,c])[0]
+y11 = vectorize(y11)
 
-def y12(ma,mi,M0,M1):
-    a = ma**2
-    b = - (mi**2 + M1**2-M0**2)
-    c = M1**2
+def y12(mi,M0,M1):
+    a = mi**2
+    b = - (mi**2 + M0**2-M1**2)
+    c = M0**2
     return roots([a,b,c])[1]
+y12 = vectorize(y12)
 
 #######################3
 #### Roots of y11, y12
 ########################
-def y21(ma,mj,M0,M2):
-    a = ma**2
-    b = - (mj**2 + M2**2-M0**2)
-    c = M2**2
+def y21(mj,M0,M2):
+    a = mj**2
+    b = - (mj**2 + M0**2-M2**2)
+    c = M0**2
     return roots([a,b,c])[0]
+y21 = vectorize(y21)
 
-def y22(ma,mj,M0,M2):
-    a = ma**2
-    b = - (mj**2 + M2**2-M0**2)
-    c = M2**2
+def y22(mj,M0,M2):
+    a = mj**2
+    b = - (mj**2 + M0**2-M2**2)
+    c = M0**2
     return roots([a,b,c])[1]
+y22 = vectorize(y22)

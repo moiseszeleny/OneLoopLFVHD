@@ -18,6 +18,7 @@ from time import time
 def speedup_array(f,array,procs=4): 
     pool = Pool(procs,maxtasksperchild=100).map(f, array)
     result = np.array(list(pool))
+    pool.close()
     return result
 
 ### Neutrino benchmark
@@ -418,18 +419,6 @@ def numeric_sum_diagrams(ms,a,b,mHpm, mA, alpha, beta, l5,
     Kphi =  4*mA**2 - 3*ms**2- 2*mHpm**2
     Qphi = ms**2 - 2*mHpm**2
     
-    # type_2HDM = type_2HDM.upper()
-    # if type_2HDM == 'I':
-    #     Yuk_common = typeI_h(alpha,beta,H_a)
-    # elif type_2HDM == 'II':
-    #     Yuk_common = typeII_h(alpha,beta,H_a)
-    # elif type_2HDM == 'Lepton-specific'.upper():
-    #     Yuk_common = Lepton_specific_h(alpha,beta,H_a)
-    # elif type_2HDM == 'Flipped'.upper():
-    #     Yuk_common = Flipped_h(alpha,beta,H_a)
-    # else:
-    #     raise ValueError('The possible values for type_2HDM are "I", "II", "Lepton-specific" and "Flipped"')
-    
     Yuk_common = type_2HDM(alpha,beta)
     xi_lphi, xi_nphi, xi_lA, xi_nA, Xi_phi, etaphi,rhophi,Dphi = Yuk_common
     def FFOne(m6):
@@ -465,128 +454,9 @@ def ARtot12(ms,m6,mHpm, mA, alpha, beta, l5,type_2HDM=typeI_h):
                                    type_2HDM=type_2HDM,quirality='R')(m6)
 
 
-
-####################################################################################
-####################################################################################
-####################################################################################    
-## Sum over diagrams with two fermions
-# def sum_diagramsTwo(m6,a,b,ms_val,mHpm,xi_nphi,xi_nA,xi_lA,quirality='L'):
-#     FFTwo = 0
-#     mnk,UnuL,UnuR = diagonalizationMnu1(m1,m6)
-#     Unu = UnuL
-#     Unu_dagger = UnuR
-#     Cij = lambda i,j: mp.fsum([Unu[c,i]*Unu_dagger[j,c] for c in range(3)])
-    
-#     mla = ml[a]
-#     mlb = ml[b]
-#     if quirality=='L':
-#         pass
-#     elif quirality=='R':
-#         pass
-#     else:
-#         raise ValueError('quirality must be L or R')
-        
-#     for p in range(1,7):
-#         for q in range(1,7):
-#             for FF_dict in FF_list_Wninj:
-#                 FFTwo += FF_dict[quirality](ms_val,mla,mlb,
-#                         mnk[p-1],mnk[q-1],Unu[b-1,q-1],Unu_dagger[p-1,a-1],
-#                   Cij(p-1,q-1),conj(Cij(p-1,q-1)),xi_nphi)
-                
-#             for FF_dict in FF_list_Hninj:
-#                 FFTwo += FF_dict[quirality](ms_val,mla,mlb,
-#                                             mnk[p-1],mnk[q-1],
-#                                             Unu[b-1,q-1],Unu_dagger[p-1,a-1],
-#                                             Cij(p-1,q-1),conj(Cij(p-1,q-1)),
-#                                             mHpm,xi_nphi,xi_nA,xi_lA)
-        
-#     return FFTwo
-
-# def numeric_sum_diagramsTwo(ms,a,b,mHpm, alpha, beta,
-#                             H_a='h',type_2HDM='I',quirality='L'):
-#     if quirality=='L':
-#         pass
-#     elif quirality=='R':
-#         pass
-#     else:
-#         raise ValueError('quirality must be L or R')
-    
-#     type_2HDM = type_2HDM.upper()
-#     if type_2HDM == 'I':
-#         Yuk_common = typeI_h(alpha,beta,H_a)
-#     elif type_2HDM == 'II':
-#         Yuk_common = typeII_h(alpha,beta,H_a)
-#     elif type_2HDM == 'Lepton-specific'.upper():
-#         Yuk_common = Lepton_specific_h(alpha,beta,H_a)
-#     elif type_2HDM == 'Flipped'.upper():
-#         Yuk_common = Flipped_h(alpha,beta,H_a)
-#     else:
-#         raise ValueError('The possible values for type_2HDM are "I", "II", "Lepton-specific" and "Flipped"')
-    
-#     xi_lphi, xi_nphi, xi_lA, xi_nA, Xi_phi, etaphi,rhophi,Dphi = Yuk_common
-#     def FFTwo(m6):
-#         out = sum_diagramsTwo(m6,a,b,ms,mHpm,xi_nphi,xi_nA,xi_lA,quirality)
-#         return out
-#     return FFTwo
-####################################################################################
-####################################################################################
-#################################################################################### 
-
-# def ALTwoTot23(ms,m6,mHpm,alpha,beta,H_a='h',type_2HDM='I'):
-#     return numeric_sum_diagramsTwo(ms,2,3,mHpm, alpha, beta,
-#                                    H_a=H_a,type_2HDM=type_2HDM,quirality='L')(m6)
-# def ARTwoTot23(ms,m6,mHpm,alpha,beta,H_a='h',type_2HDM='I'):
-#     return numeric_sum_diagramsTwo(ms,2,3,mHpm, alpha, beta,
-#                                    H_a=H_a,type_2HDM=type_2HDM,quirality='R')(m6)
-
-# def ALTwoTot13(ms,m6,mHpm,alpha,beta,H_a='h',type_2HDM='I'):
-#     return numeric_sum_diagramsTwo(ms,1,3,mHpm, alpha, beta,
-#                                    H_a=H_a,type_2HDM=type_2HDM,quirality='L')(m6)
-# def ARTwoTot13(ms,m6,mHpm,alpha,beta,H_a='h',type_2HDM='I'):
-#     return numeric_sum_diagramsTwo(ms,1,3,mHpm, alpha, beta,
-#                                    H_a=H_a,type_2HDM=type_2HDM,quirality='R')(m6)
-
-# def ALTwoTot12(ms,m6,mHpm,alpha,beta,H_a='h',type_2HDM='I'):
-#     return numeric_sum_diagramsTwo(ms,1,2,mHpm, alpha, beta,
-#                                    H_a=H_a,type_2HDM=type_2HDM,quirality='L')(m6)
-# def ARTwoTot12(ms,m6,mHpm,alpha,beta,H_a='h',type_2HDM='I'):
-#     return numeric_sum_diagramsTwo(ms,1,2,mHpm, alpha, beta,
-#                                    H_a=H_a,type_2HDM=type_2HDM,quirality='R')(m6)
-################3
-# Total Form Factor
-###################
-#a = 2, b = 3
-# def ALtot23(ms,m6,mHpm, mA, alpha, beta, l5,H_a='h',type_2HDM='I'):
-#     ALOne = ALOneTot23(ms,m6,mHpm, mA, alpha, beta, l5,H_a=H_a,type_2HDM=type_2HDM)
-#     ALTwo = ALTwoTot23(ms,m6,mHpm,alpha,beta,H_a=H_a,type_2HDM=type_2HDM)
-#     return  ALOne + ALTwo
-
-# def ARtot23(ms,m6,mHpm, mA, alpha, beta, l5,H_a='h',type_2HDM='I'):
-#     AROne = AROneTot23(ms,m6,mHpm, mA, alpha, beta, l5,H_a=H_a,type_2HDM=type_2HDM)
-#     ARTwo = ARTwoTot23(ms,m6,mHpm,alpha,beta,H_a=H_a,type_2HDM=type_2HDM)
-#     return  AROne + ARTwo
-
-# #a = 1, b = 3
-# def ALtot13(ms,m6,mHpm, mA, alpha, beta, l5,H_a='h',type_2HDM='I'):
-#     ALOne = ALOneTot13(ms,m6,mHpm, mA, alpha, beta, l5,H_a=H_a,type_2HDM=type_2HDM)
-#     ALTwo = ALTwoTot13(ms,m6,mHpm,alpha,beta,H_a=H_a,type_2HDM=type_2HDM)
-#     return  ALOne + ALTwo
-
-# def ARtot13(ms,m6,mHpm, mA, alpha, beta, l5,H_a='h',type_2HDM='I'):
-#     AROne = AROneTot13(ms,m6,mHpm, mA, alpha, beta, l5,H_a=H_a,type_2HDM=type_2HDM)
-#     ARTwo = ARTwoTot13(ms,m6,mHpm,alpha,beta,H_a=H_a,type_2HDM=type_2HDM)
-#     return  AROne + ARTwo
-
-# #a = 1, b = 2
-# def ALtot12(ms,m6,mHpm, mA, alpha, beta, l5,H_a='h',type_2HDM='I'):
-#     ALOne = ALOneTot12(ms,m6,mHpm, mA, alpha, beta, l5,H_a=H_a,type_2HDM=type_2HDM)
-#     ALTwo = ALTwoTot12(ms,m6,mHpm,alpha,beta,H_a=H_a,type_2HDM=type_2HDM)
-#     return  ALOne + ALTwo
-
-# def ARtot12(ms,m6,mHpm, mA, alpha, beta, l5,H_a='h',type_2HDM='I'):
-#     AROne = AROneTot12(ms,m6,mHpm, mA, alpha, beta, l5,H_a=H_a,type_2HDM=type_2HDM)
-#     ARTwo = ARTwoTot12(ms,m6,mHpm,alpha,beta,H_a=H_a,type_2HDM=type_2HDM)
-#     return  AROne + ARTwo
+#######################################################
+#######################################################
+#######################################################
 
 ### Def angles alpha and beta
 def betaf(tb):
@@ -658,7 +528,7 @@ if __name__ == '__main__':
     #y2 = np.ones_like(tbmp)*Atlas_bound23
     
     start = perf_counter()
-    for modelo in [modelo_typeI]:#modelos:
+    for modelo in modelos:#modelos:
         for caso in casos:
 
             mHpm_val = mp.mpf(caso['mHpm'])

@@ -13,6 +13,8 @@ mtau = mpf('1.77686') #GeV
 mmu = mpf('0.10566')#GeV 
 me = mpf('0.000511') #GeV
 ml = {1:me,2:mmu,3:mtau}
+ml_np = {1:0.000511,2:0.10566,3:1.77686}
+
 
 # intermediate pave functions with names allowed by lambdify
 from sympy import Function
