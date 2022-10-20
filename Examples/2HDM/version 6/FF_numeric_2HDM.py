@@ -18,7 +18,7 @@ from time import time
 def speedup_array(f,array,procs=4): 
     pool = Pool(procs,maxtasksperchild=100).map(f, array)
     result = np.array(list(pool))
-    pool.close()
+    #pool.close()
     return result
 
 ### Neutrino benchmark

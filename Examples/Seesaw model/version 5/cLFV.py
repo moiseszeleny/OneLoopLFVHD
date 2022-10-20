@@ -3,7 +3,7 @@
 ##########################################################
 ########### mpmath
 from mpmath import log, pi, conj
-from mpmath import fsum, mpf
+from mpmath import fsum, mpf,matrix
 #######################3
 ###Seesaw###
 #######################3
@@ -25,7 +25,7 @@ def BR_lm_gammalk(m,k,Width_lm,m1,m2,m3,m4,m5,m6):
     Mi,UL, UR = diagonalizationMnu(m1,m2,m3,m4,m5,m6)
     Gmk = fsum(
         [
-            UL[k-1,i]*UR[m-1,i]*Ggamma(Mi[i]**2/mW**2) 
+            UL[k-1,i]*conj(UR[m-1,i])*Ggamma(Mi[i]**2/mW**2) 
             for i in range(3,6)
         ]
         )

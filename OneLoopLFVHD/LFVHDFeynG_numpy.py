@@ -5,7 +5,8 @@ Created on Wed Feb 16  01:27:53 2021
 
 @author: Moises Zeleny
 """
-from numpy import sqrt,log,conjugate,pi, where,array, vectorize,complex128, complex256,float64, float128
+from numpy import log,log1p,conjugate,pi, where,array, vectorize
+from numpy import complex128, complex256,float64, float128
 from numpy import nan_to_num
 from numpy import sum as sumnp
 from numpy import abs as npabs
@@ -13,7 +14,7 @@ from numpy import abs as npabs
 δ = 0
 from scipy.special import spence
 def sci_polylog(s,z):
-    return spence(1-z,dtype=complex128)#
+    return spence(1-z)#
 ##################################################################################################
 # Funciones de Passarino Veltman pertinentes para LFVHD
 ##################################################################################################
@@ -28,57 +29,7 @@ _sols = solve(_funcion,_x)
 _solsnp = lambdify([_ma,_m1,_m2],_sols,'numpy')
 
 
-#def x1(ma,M1,M2):
-#    B = -M1**2 + M2**2 + ma**2 
-#    C = M1**4 - 2*M1**2*M2**2 - 2*M1**2*ma**2 + M2**2 - 2*M2**2*ma**2 + ma**4
-#    return (B -sqrt(C,dtype=complex256))/(2*ma**2)
-#def x2(ma,M1,M2):
-#    B = -M1**2 + M2**2 + ma**2 
-#    C = M1**4 - 2*M1**2*M2**2 - 2*M1**2*ma**2 + M2**2 - 2*M2**2*ma**2 + ma**4
-#    return (B + sqrt(C,dtype=complex256))/(2*ma**2)
-
 from .roots import x1,x2, rootsx2_inv
-
-#def xk(i,ma,M1,M2):
-#    if i in [1,2]:
-#        if i==1:
-#            out = x1(ma,M1,M2)
-#        else:
-#            out = x2(ma,M1,M2)
-#    else:
-#        raise ValueError('i must be equals to 1 or 2.')
-
-#def xk(i,ma,M1,M2): 
-#    if i in [1,2]:
-#        if M1 == M2 and npabs(M1)<1e-6:
-#            if i==1:
-#                out= (M1/ma)**2 + (M1/ma)**4
-#            if i==2:
-#                out = 1 - (M1/ma)**2 - (M1/ma)**4
-#        else:
-#            out = _solsnp(ma,M1,M2)[i-1]
-#    else: 
-#        raise ValueError('i must be equals to 1 or 2.')
-#    return out
-
-#xk = vectorize(xk)
-## aproximation of g =1-1/xk for k =1,2
-
-#def gk(i,ma,M1,M2): 
-#    if i in [1,2]:
-#        if M1 == M2 and npabs(M1)<1e-6:
-#            if i==1:
-#                out= - (ma/M1)**2 + 2 + (M1/ma)**2 + 2*(M1/ma)**4 
-#            if i==2:
-#                out = - (M1/ma)**2 - 2*(M1/ma)**4
-#        else:
-#            x = xk(i,ma,M1,M2)
-#            out = (x- 1)/x
-#    else: 
-#        raise ValueError('i must be equals to 1 or 2.')
-#    return out
-        
-#gk = vectorize(gk)
 
 # C0 en terminos de R0
 Li2 = lambda x0: sci_polylog(2,x0)
@@ -107,23 +58,58 @@ from numpy import log1p
 #f1np = lambdify([y],f1,'numpy')
 
 # Aproximaciones de f_n provenienetes de Seesaw new discussions
-def f0np(y):
-    down = (1-y)*log((y-1)/y,dtype=complex256)-1 
-    X = 0
-    for l in range(1,21):
-        X += y**(-l)/(l+1)
+# def f0np(y):
+#     down = (1-y)*log((y-1)/y,dtype=complex256)-1 
+#     X = 0
+#     for l in range(1,21):
+#         X += y**(-l)/(l+1)
 
-    upper = log((y-1)/y,dtype=complex256) + X
-    return where(npabs(y)<10, down,upper)
+#     upper = log((y-1)/y,dtype=complex256) + X
+#     return where(npabs(y)<10, down,upper)
+
+# def f1np(y):
+#     down = (1-y**2)*log((y-1)/y)-(y + 0.5) 
+#     X = 0
+#     for l in range(2,22):
+#         X += y**(1-l)/(l+1)
+
+#     upper = log((y-1)/y,dtype=complex256) + X
+#     return where(npabs(y)<10, down,upper)
+
+def f0np(y):
+    '''
+    f0 function
+
+    Parameters
+    ----------
+        y: float, mpf
+    '''
+    # if y == 1:
+    #     out = -1
+    # else:
+    #     out = y*log(-1.0*y) - y*log1p(-y) + log1p(-1.0/y) - 1.0
+    # return out
+    return y*log(-1.0*y) - y*log1p(-y) + log1p(-1.0/y) - 1.0
+
 
 def f1np(y):
-    down = (1-y**2)*log((y-1)/y)-(y + 0.5) 
-    X = 0
-    for l in range(2,22):
-        X += y**(1-l)/(l+1)
+    '''
+    f1 function
 
-    upper = log((y-1)/y,dtype=complex256) + X
-    return where(npabs(y)<10, down,upper)
+    Parameters
+    ----------
+        y: float, mpf
+    '''
+    # if y == 1:
+    #     out = -mpf('3')/2
+    # else:
+    #     out = mp.power(y, 2)*log(-y) -\
+    #         mp.power(y, 2)*log1p(-y) -\
+    #         y + log1p(-1/y) - mpf('0.5')  # lambdify([y],f1,'mpmath')
+    # return out
+    return y**2*log(-y) -\
+        y**2*log1p(-y) -\
+        y + log1p(-1/y) - 0.5
 
 #soluciones de la ecuación
 M0,M1,M2 = symbols('M_0,M_1,M_2',positive=True)
@@ -134,46 +120,11 @@ ec2 = y**2*_ma**2 - y*(_mj**2 + M2**2-M0**2) + M2**2
 y11,y12 = solve(ec1,y)
 y21,y22 = solve(ec2,y)
 
-#Convirtiendo en funciones simbolicas las soluciones yij
-#y11np = lambda ma,mi,M0,M1:(1.0/(2*ma**2))*(-M0**2 + M1**2 + mi**2- sqrt(-(-M0**2 + M1**2 + 2*M1*ma + mi**2)*(M0**2 -M1**2 + 2*M1*ma - mi**2),dtype=complex256))#lambdify([_ma,_mi,M0,M1],y11,'numpy')
-#y12np = lambda ma,mi,M0,M1:(1.0/(2*ma**2))*(-M0**2 + M1**2 + mi**2 + sqrt(-(-M0**2 + M1**2 + 2*M1*ma + mi**2)*(M0**2 -M1**2 + 2*M1*ma - mi**2),dtype=complex256))#lambdify([_ma,_mi,M0,M1],y12,'numpy')
-#y21np = lambda ma,mj,M0,M2:y11np(ma,mj,M0,M2) #lambdify([_ma,_mj,M0,M2],y21,'numpy')
-#y22np = lambda ma,mj,M0,M2:y12np(ma,mj,M0,M2)#lambdify([_ma,_mj,M0,M2],y22,'numpy')
-
 from .roots import y11 as y11np
 from .roots import y12 as y12np
 from .roots import y21 as y21np
 from .roots import y22 as y22np
 
-
-
-#def y1j(j,ma,mi,M0,M1):
-#    if j ==1:
-#        out = y11np(ma,mi,M0,M1)
-#    elif j==2:
-#        if npabs(M1)<1e-6:
-#            out = M1**2*(-M0**2 - 2*ma**2 + mi**2 + sqrt(M0**4 - 2*M0**2*mi**2 + mi**4))/(2*ma**2*sqrt(M0**4 - 2*M0**2*mi**2 + mi**4))
-        #elif npabs(M0)>1e6 and M1==80.379:
-        #    out = 
-#        else:
-#            out = y12np(ma,mi,M0,M1)
-#    else:
-#        raise ValueError('i must be equals to 1 or 2.')
-#    return out
-
-#y1j = vectorize(y1j)
-
-#def y2j(j,ma,mj,M0,M2):
-#    if j ==1:
-#        out = y21np(ma,mj,M0,M2)
-#    elif j==2:
-#        if npabs(M2)<1e-6:
-#            out = M2**2*(-M0**2 - 2*ma**2 + mj**2 + sqrt(M0**4 - 2*M0**2*mj**2 + mj**4))/(2*ma**2*sqrt(M0**4 - 2*M0**2*mj**2 + mj**4))
-#        else:
-#            out = y22np(ma,mj,M0,M2)
-#    else:
-#        raise ValueError('i must be equals to 1 or 2.')
-#    return out
 
 #y2j = vectorize(y2j)
 

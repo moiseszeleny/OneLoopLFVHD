@@ -6,7 +6,6 @@ Home-page: https://github.com/moiseszeleny/LFVHD
 Author: Moises Zeleny Mora
 Author-email: moiseszeleny@gmail.com
 License: MIT
-Platform: UNKNOWN
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python
 Classifier: Programming Language :: Python :: 3
@@ -23,7 +22,5 @@ License-File: LICENSE
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/moiseszeleny/LFVHD/master)
 
 We code the posibles one loop feynman diagrams to Lepton Flavour Violation Higgs decays using a generic approach.
-
-
 
 

@@ -4,11 +4,14 @@ pyproject.toml
 setup.py
 OneLoopLFVHD/LFVHDFeynG_mpmath.py
 OneLoopLFVHD/LFVHDFeynG_mpmath2.py
+OneLoopLFVHD/LFVHDFeynG_mpmathDelta.py
 OneLoopLFVHD/LFVHDFeynG_numpy.py
+OneLoopLFVHD/LFVHDFeynG_numpy2.py
 OneLoopLFVHD/LFVHDFeynGv2.py
 OneLoopLFVHD/LFVHDFeynGv3.py
 OneLoopLFVHD/__init__.py
 OneLoopLFVHD/data.py
+OneLoopLFVHD/evaluation.py
 OneLoopLFVHD/neutrinos.py
 OneLoopLFVHD/roots.py
 OneLoopLFVHD/roots_mpmath.py
@@ -19,3 +22,4 @@ OneLoopLFVHD.egg-info/SOURCES.txt
 OneLoopLFVHD.egg-info/dependency_links.txt
 OneLoopLFVHD.egg-info/requires.txt
 OneLoopLFVHD.egg-info/top_level.txt
+test/test_f0.py

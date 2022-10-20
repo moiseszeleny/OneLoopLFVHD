@@ -58,8 +58,10 @@ def pave_functions(mh,a,b,lib='mpmath'):
     mj = ml[b]
     if lib == 'mpmath':
         from .LFVHDFeynG_mpmath2 import B1_0, B2_0, B1_1, B2_1, B12_0, C0, C1, C2
+    elif lib == 'mpmathDelta':
+        from .LFVHDFeynG_mpmathDelta import B1_0, B2_0, B1_1, B2_1, B12_0, C0, C1, C2
     else:
-        from .LFVHDFeynG_numpy import B1_0, B2_0, B1_1, B2_1, B12_0, C0, C1, C2
+        from .LFVHDFeynG_numpy2 import B1_0, B2_0, B1_1, B2_1, B12_0, C0, C1, C2
     return {
         'B10': lambda M0,M1:B1_0(mi,M0,M1),
         'B20': lambda M0,M2:B2_0(mj,M0,M2),
