@@ -1,0 +1,59 @@
+n = Traceback (most recent call last):
+  File "FF_numeric_2HDM_I.py", line 516, in <module>
+    n = int(input("n = "))
+OSError: [Errno 9] Bad file descriptor
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Type_I/TypeI_Cab095_caso4.txt has been completed
+EL tiempo de ejecución es: 
+
+1.4175420041722224
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Type_I/TypeI_Cab095_caso4.txt has been completed
+EL tiempo de ejecución es: 
+
+1.5541213150494444
+Traceback (most recent call last):
+  File "FF_numeric_2HDM_LS.py", line 83, in <module>
+    from modelos_2HDM import coeff_lepton_specific as coeff_h
+ImportError: cannot import name 'coeff_lepton_specific' from 'modelos_2HDM' (/home/moiseszm/Escritorio/ProyectoLFVHD/LFVHD/Examples/2HDM/version 8/modelos_2HDM.py)
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Lepton_specific/Lepton_specific_Cab095_caso4.txt has been completed
+EL tiempo de ejecución es: 
+
+1.4534285284888888
+output/Lepton_specific/Lepton_specific_Cab095_caso3.txt has been completed
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Lepton_specific/Lepton_specific_Cab095_caso4.txt has been completed
+EL tiempo de ejecución es: 
+
+3.0659094995191665
+output/Type_I/TypeI_Cab095_caso3.txt has been completed
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Type_I/TypeI_Cab095_caso4.txt has been completed
+EL tiempo de ejecución es: 
+
+10.126459801313056
+output/Lepton_specific/Lepton_specific_Cab095_caso1.txt has been completed
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Lepton_specific/Lepton_specific_Cab095_caso2.txt has been completed
+EL tiempo de ejecución es: 
+
+11.067894268651111
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Flipped/Flipped_Cab095_caso1.txt has been completed
+EL tiempo de ejecución es: 
+
+1.4006903901397223

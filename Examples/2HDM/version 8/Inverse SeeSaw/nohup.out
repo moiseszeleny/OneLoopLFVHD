@@ -1,0 +1,19 @@
+output/Type_I/TypeI_Cab095_caso1.txt has been completed
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Type_I/TypeI_Cab095_caso2.txt has been completed
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Type_I/TypeI_Cab095_caso3.txt has been completed
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+/home/moiseszm/.local/lib/python3.7/site-packages/numpy/ma/core.py:6849: RuntimeWarning: overflow encountered in power
+  result = np.where(m, fa, umath.power(fa, fb)).view(basetype)
+output/Type_I/TypeI_Cab095_caso4.txt has been completed
+EL tiempo de ejecución es: 
+
+7.375947345705834
+  File "FF_numeric_2HDM_I.py", line 522
+    cab_val = mp.mpf(caso['cab'])from parameter_values import m6
+                                    ^
+SyntaxError: invalid syntax
